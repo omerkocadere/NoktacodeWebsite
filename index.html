@@ -1,492 +1,682 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noktacode — Yazılım Çözümleri</title>
-  <meta name="description" content="Noktacode - Modern yazılım çözümleri ile dijital dönüşümünüzü hızlandırıyoruz." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noktacode — Yazılım Çözümleri</title>
+    <meta name="description" content="Noktacode - Modern yazılım çözümleri ile dijital dönüşümünüzü hızlandırıyoruz." />
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⟨⟩</text></svg>" />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⟨⟩</text></svg>"
+    />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { inter: ["Inter", "sans-serif"] },
-          colors: {
-            accent: { DEFAULT: "#6366f1", light: "#818cf8", dark: "#4f46e5" },
-            violet: { DEFAULT: "#8b5cf6", light: "#a78bfa" },
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "sans-serif"] },
+            colors: {
+              accent: { DEFAULT: "#6366f1", light: "#818cf8", dark: "#4f46e5" },
+              violet: { DEFAULT: "#8b5cf6", light: "#a78bfa" },
+            },
           },
         },
-      },
-    };
-  </script>
+      };
+    </script>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Prevent flash of wrong theme -->
-  <script>
-    (function() {
-      var t = localStorage.getItem('noktacode-theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
-</head>
-<body class="font-inter antialiased">
+    <!-- Prevent flash of wrong theme -->
+    <script>
+      (function () {
+        var t = localStorage.getItem("noktacode-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
+  <body class="font-inter antialiased">
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-violet flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20"
+            >
+              N
+            </div>
+            <span class="text-xl font-bold tracking-tight" style="color: var(--text-primary)"
+              >Nokta<span class="text-accent-light">code</span></span
+            >
+          </a>
 
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#services" class="nav-link text-sm" data-i18n="navServices">Hizmetler</a>
+            <a href="#about" class="nav-link text-sm" data-i18n="navAbout">Hakkımızda</a>
+            <a href="#projects" class="nav-link text-sm" data-i18n="navProjects">Projeler</a>
+            <a href="#contact" class="nav-link text-sm" data-i18n="navContact">İletişim</a>
 
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-2">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-violet flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20">N</div>
-          <span class="text-xl font-bold tracking-tight" style="color: var(--text-primary);">Nokta<span class="text-accent-light">code</span></span>
-        </a>
+            <!-- Language Toggle -->
+            <button
+              id="langToggle"
+              class="lang-toggle flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
+            >
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span data-i18n="langToggle">EN</span>
+            </button>
 
-        <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#services" class="nav-link text-sm" data-i18n="navServices">Hizmetler</a>
-          <a href="#about" class="nav-link text-sm" data-i18n="navAbout">Hakkımızda</a>
-          <a href="#projects" class="nav-link text-sm" data-i18n="navProjects">Projeler</a>
-          <a href="#contact" class="nav-link text-sm" data-i18n="navContact">İletişim</a>
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+              <i data-lucide="sun" class="w-4 h-4 icon-sun"></i>
+              <i data-lucide="moon" class="w-4 h-4 icon-moon"></i>
+            </button>
+          </div>
 
-          <!-- Language Toggle -->
-          <button id="langToggle" class="lang-toggle flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium">
-            <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <!-- Mobile Hamburger -->
+          <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 p-2 group">
+            <span
+              class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"
+            ></span>
+            <span class="hamburger-line block w-6 h-0.5 group-[.open]:opacity-0"></span>
+            <span
+              class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"
+            ></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu fixed top-20 right-0 bottom-0 w-72 md:hidden z-50">
+        <div class="flex flex-col p-6 gap-4">
+          <a href="#services" class="mobile-link text-lg py-2" data-i18n="navServices">Hizmetler</a>
+          <a href="#about" class="mobile-link text-lg py-2" data-i18n="navAbout">Hakkımızda</a>
+          <a href="#projects" class="mobile-link text-lg py-2" data-i18n="navProjects">Projeler</a>
+          <a href="#contact" class="mobile-link text-lg py-2" data-i18n="navContact">İletişim</a>
+          <div class="section-divider my-2"></div>
+          <button id="langToggleMobile" class="mobile-link flex items-center gap-2 text-sm py-2">
+            <i data-lucide="globe" class="w-4 h-4"></i>
             <span data-i18n="langToggle">EN</span>
           </button>
-
-          <!-- Theme Toggle -->
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+          <button id="themeToggleMobile" class="theme-toggle" aria-label="Toggle theme">
             <i data-lucide="sun" class="w-4 h-4 icon-sun"></i>
             <i data-lucide="moon" class="w-4 h-4 icon-moon"></i>
           </button>
         </div>
-
-        <!-- Mobile Hamburger -->
-        <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 p-2 group">
-          <span class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
-          <span class="hamburger-line block w-6 h-0.5 group-[.open]:opacity-0"></span>
-          <span class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
-        </button>
       </div>
-    </div>
+    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed top-20 right-0 bottom-0 w-72 md:hidden z-50">
-      <div class="flex flex-col p-6 gap-4">
-        <a href="#services" class="mobile-link text-lg py-2" data-i18n="navServices">Hizmetler</a>
-        <a href="#about" class="mobile-link text-lg py-2" data-i18n="navAbout">Hakkımızda</a>
-        <a href="#projects" class="mobile-link text-lg py-2" data-i18n="navProjects">Projeler</a>
-        <a href="#contact" class="mobile-link text-lg py-2" data-i18n="navContact">İletişim</a>
-        <div class="section-divider my-2"></div>
-        <button id="langToggleMobile" class="mobile-link flex items-center gap-2 text-sm py-2">
-          <i data-lucide="globe" class="w-4 h-4"></i>
-          <span data-i18n="langToggle">EN</span>
-        </button>
-        <button id="themeToggleMobile" class="theme-toggle" aria-label="Toggle theme">
-          <i data-lucide="sun" class="w-4 h-4 icon-sun"></i>
-          <i data-lucide="moon" class="w-4 h-4 icon-moon"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div class="hero-bg"></div>
+      <div class="grid-pattern"></div>
+      <div id="particles" class="absolute inset-0 z-[1] pointer-events-none"></div>
 
-  <!-- ========== HERO SECTION ========== -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div class="hero-bg"></div>
-    <div class="grid-pattern"></div>
-    <div id="particles" class="absolute inset-0 z-[1] pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-      <!-- Badge -->
-      <div class="reveal hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-8">
-        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-        Yazılım Çözüm Ortağınız
-      </div>
-
-      <!-- Title -->
-      <h1 class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6" data-i18n-html="heroTitle">
-        Dijital Dünyada <span class="text-gradient">Fark Yaratıyoruz</span>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="reveal text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color: var(--text-secondary);" data-i18n="heroSubtitle">
-        Modern teknolojiler ile işletmenizi geleceğe taşıyoruz. Yazılım çözümlerimizle dijital dönüşümünüzü hızlandırıyoruz.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#contact" class="btn-glow pulse-ring px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-violet text-white font-semibold text-base shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all" data-i18n="heroCta">
-          İletişime Geç
-        </a>
-        <a href="#projects" class="btn-outline group px-8 py-4 rounded-xl font-medium text-base flex items-center gap-2" data-i18n="heroSecondary">
-          Projelerimizi İncele
-          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-        </a>
-      </div>
-
-      <!-- Tech Stack -->
-      <div class="reveal mt-20 flex items-center justify-center gap-8 text-sm" style="color: var(--text-muted);">
-        <span>React</span>
-        <span class="w-1 h-1 rounded-full" style="background: var(--text-muted);"></span>
-        <span>Next.js</span>
-        <span class="w-1 h-1 rounded-full" style="background: var(--text-muted);"></span>
-        <span>Node.js</span>
-        <span class="w-1 h-1 rounded-full" style="background: var(--text-muted);"></span>
-        <span>Python</span>
-        <span class="w-1 h-1 rounded-full" style="background: var(--text-muted);"></span>
-        <span>AWS</span>
-        <span class="w-1 h-1 rounded-full" style="background: var(--text-muted);"></span>
-        <span>Flutter</span>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2" style="color: var(--text-muted);">
-      <div class="w-6 h-10 rounded-full border-2 flex items-start justify-center p-1" style="border-color: var(--text-muted);">
-        <div class="w-1.5 h-3 rounded-full animate-bounce" style="background: var(--text-secondary);"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SERVICES SECTION ========== -->
-  <section id="services" class="py-24 relative">
-    <div class="section-divider mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="servicesTitle">Hizmetlerimiz</h2>
-        <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);" data-i18n="servicesSubtitle">İşletmenizin ihtiyaçlarına özel, son teknoloji çözümler sunuyoruz.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="monitor" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceWebTitle">Web Geliştirme</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceWebDesc">Modern ve performanslı web uygulamaları geliştiriyoruz. React, Next.js, Vue.js ve daha fazlası ile projelerinizi hayata geçiriyoruz.</p>
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+        <!-- Badge -->
+        <div class="reveal hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-8">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          Yazılım Çözüm Ortağınız
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="smartphone" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceMobileTitle">Mobil Uygulama</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceMobileDesc">iOS ve Android platformları için native ve cross-platform mobil uygulamalar geliştiriyoruz.</p>
-        </div>
+        <!-- Title -->
+        <h1
+          class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6"
+          data-i18n-html="heroTitle"
+        >
+          Dijital Dünyada <span class="text-gradient">Fark Yaratıyoruz</span>
+        </h1>
 
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="palette" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceUiTitle">UI/UX Tasarım</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceUiDesc">Kullanıcı deneyimini ön plana çıkaran, modern ve estetik arayüz tasarımları oluşturuyoruz.</p>
-        </div>
+        <!-- Subtitle -->
+        <p
+          class="reveal text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          style="color: var(--text-secondary)"
+          data-i18n="heroSubtitle"
+        >
+          Modern teknolojiler ile işletmenizi geleceğe taşıyoruz. Yazılım çözümlerimizle dijital dönüşümünüzü
+          hızlandırıyoruz.
+        </p>
 
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="cloud" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceCloudTitle">Bulut Çözümleri</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceCloudDesc">AWS, Azure ve Google Cloud altyapıları ile ölçeklenebilir ve güvenilir bulut çözümleri sunuyoruz.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="plug" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceApiTitle">API Entegrasyonu</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceApiDesc">Sistemlerinizi birbirine bağlayan güçlü API çözümleri ve üçüncü parti entegrasyonlar geliştiriyoruz.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6">
-          <div class="service-icon mb-4"><i data-lucide="lightbulb" class="w-6 h-6"></i></div>
-          <h3 class="text-lg font-semibold mb-2" data-i18n="serviceConsultTitle">Yazılım Danışmanlığı</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="serviceConsultDesc">Teknoloji seçimi, mimari tasarım ve dijital dönüşüm süreçlerinizde uzman danışmanlık hizmeti veriyoruz.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ABOUT SECTION ========== -->
-  <section id="about" class="py-24 relative">
-    <div class="section-divider mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="reveal-left">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="aboutTitle">Hakkımızda</h2>
-          <p class="text-accent-light font-medium mb-6" data-i18n="aboutSubtitle">Tutkuyla kod yazıyoruz, mükemmellikle teslim ediyoruz.</p>
-          <p class="leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="aboutText1">
-            Noktacode olarak, yazılım dünyasında yenilikçi çözümler üretmeye odaklanmış bir teknoloji firmasıyız. Müşterilerimizin dijital dönüşüm yolculuğunda güvenilir bir iş ortağı olmayı hedefliyoruz.
-          </p>
-          <p class="leading-relaxed" style="color: var(--text-secondary);" data-i18n="aboutText2">
-            Deneyimli ekibimiz ile en son teknolojileri kullanarak, işletmelerin ihtiyaçlarına özel yazılım çözümleri geliştiriyoruz. Her projede kalite, performans ve kullanıcı deneyimini ön planda tutuyoruz.
-          </p>
-        </div>
-
-        <div class="reveal-right grid grid-cols-2 gap-6">
-          <div class="glass-card rounded-2xl p-6 text-center">
-            <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="150">0</div>
-            <div class="text-sm mt-2" style="color: var(--text-secondary);" data-i18n="statProjects">Tamamlanan Proje</div>
-          </div>
-          <div class="glass-card rounded-2xl p-6 text-center">
-            <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="80">0</div>
-            <div class="text-sm mt-2" style="color: var(--text-secondary);" data-i18n="statClients">Mutlu Müşteri</div>
-          </div>
-          <div class="glass-card rounded-2xl p-6 text-center">
-            <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="5">0</div>
-            <div class="text-sm mt-2" style="color: var(--text-secondary);" data-i18n="statExperience">Yıl Tecrübe</div>
-          </div>
-          <div class="glass-card rounded-2xl p-6 text-center">
-            <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="30">0</div>
-            <div class="text-sm mt-2" style="color: var(--text-secondary);" data-i18n="statTech">Teknoloji</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PROJECTS SECTION ========== -->
-  <section id="projects" class="py-24 relative">
-    <div class="section-divider mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="projectsTitle">Projelerimiz</h2>
-        <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);" data-i18n="projectsSubtitle">Geliştirdiğimiz bazı projeler ve kullandığımız teknolojiler.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
-        <!-- Project 1 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/20 flex items-center justify-center">
-                <i data-lucide="shopping-cart" class="w-5 h-5 text-emerald-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project1Title">E-Ticaret Platformu</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project1Desc">Yüksek trafikli, ölçeklenebilir e-ticaret çözümü. Gerçek zamanlı stok yönetimi ve ödeme entegrasyonları.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">Next.js</span><span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Stripe</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-rose-500/20 flex items-center justify-center">
-                <i data-lucide="heart-pulse" class="w-5 h-5 text-rose-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project2Title">Sağlık Takip Uygulaması</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project2Desc">Hastaların sağlık verilerini takip eden mobil uygulama. Doktor-hasta iletişim modülü dahil.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span><span class="tech-tag">Dart</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/20 flex items-center justify-center">
-                <i data-lucide="bar-chart-3" class="w-5 h-5 text-blue-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project3Title">Fintech Dashboard</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project3Desc">Finansal verilerin gerçek zamanlı görselleştirildiği analitik dashboard. Gelişmiş grafik ve raporlama.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">React</span><span class="tech-tag">D3.js</span><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/20 flex items-center justify-center">
-                <i data-lucide="truck" class="w-5 h-5 text-amber-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project4Title">Lojistik Yönetim Sistemi</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project4Desc">Filo takibi, rota optimizasyonu ve teslimat yönetimi için kapsamlı lojistik platformu.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">Vue.js</span><span class="tech-tag">Go</span><span class="tech-tag">MongoDB</span><span class="tech-tag">Docker</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-purple-500/20 border border-violet-500/20 flex items-center justify-center">
-                <i data-lucide="graduation-cap" class="w-5 h-5 text-violet-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project5Title">Eğitim Portalı</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project5Desc">Online eğitim platformu. Video dersler, canlı sınıflar ve interaktif sınav modülleri.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">Next.js</span><span class="tech-tag">WebRTC</span><span class="tech-tag">Redis</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card glass-card rounded-2xl p-6">
-          <div class="project-content">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/20 flex items-center justify-center">
-                <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
-              </div>
-              <h3 class="text-lg font-semibold" data-i18n="project6Title">IoT Kontrol Paneli</h3>
-            </div>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);" data-i18n="project6Desc">Akıllı cihazların uzaktan izlenmesi ve yönetimi için IoT dashboard uygulaması.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-tag">React</span><span class="tech-tag">MQTT</span><span class="tech-tag">AWS IoT</span><span class="tech-tag">Grafana</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== CONTACT SECTION ========== -->
-  <section id="contact" class="py-24 relative">
-    <div class="section-divider mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="contactTitle">İletişim</h2>
-        <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);" data-i18n="contactSubtitle">Projenizi konuşalım. Size en kısa sürede dönüş yapacağız.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
-        <!-- Contact Form — FormSubmit.co -->
-        <div class="lg:col-span-3 reveal-left">
-          <form id="contactForm" action="https://formsubmit.co/info@noktacode.com" method="POST" class="space-y-5">
-            <!-- FormSubmit config -->
-            <input type="hidden" name="_subject" value="Noktacode — Yeni İletişim Mesajı" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" id="formNext" value="" />
-            <input type="text" name="_honey" style="display:none" />
-
-            <div>
-              <input type="text" name="name" required class="form-input w-full px-5 py-4 rounded-xl text-sm" data-i18n-placeholder="contactName" placeholder="Adınız Soyadınız" />
-            </div>
-            <div>
-              <input type="email" name="email" required class="form-input w-full px-5 py-4 rounded-xl text-sm" data-i18n-placeholder="contactEmail" placeholder="E-posta Adresiniz" />
-            </div>
-            <div>
-              <textarea name="message" rows="5" required class="form-input w-full px-5 py-4 rounded-xl text-sm resize-none" data-i18n-placeholder="contactMessage" placeholder="Mesajınız"></textarea>
-            </div>
-            <button type="submit" class="btn-glow w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-violet text-white font-semibold text-sm shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all flex items-center justify-center gap-2">
-              <i data-lucide="send" class="w-4 h-4"></i>
-              <span data-i18n="contactSend">Mesaj Gönder</span>
-            </button>
-          </form>
-
-          <div id="formSuccess" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm" data-i18n="contactSuccess">
-            Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.
-          </div>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="lg:col-span-2 reveal-right">
-          <div class="glass-card rounded-2xl p-8 space-y-8">
-            <h3 class="text-lg font-semibold" data-i18n="contactInfoTitle">İletişim Bilgileri</h3>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="mail" class="w-5 h-5 text-accent-light"></i>
-              </div>
-              <div>
-                <div class="text-sm mb-1" style="color: var(--text-secondary);" data-i18n="contactEmailLabel">E-posta</div>
-                <div class="text-sm font-medium" data-i18n="contactEmailValue">info@noktacode.com</div>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="phone" class="w-5 h-5 text-accent-light"></i>
-              </div>
-              <div>
-                <div class="text-sm mb-1" style="color: var(--text-secondary);" data-i18n="contactPhoneLabel">Telefon</div>
-                <div class="text-sm font-medium" data-i18n="contactPhoneValue">+90 (555) 123 45 67</div>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
-                <i data-lucide="map-pin" class="w-5 h-5 text-accent-light"></i>
-              </div>
-              <div>
-                <div class="text-sm mb-1" style="color: var(--text-secondary);" data-i18n="contactAddressLabel">Adres</div>
-                <div class="text-sm font-medium" data-i18n="contactAddressValue">İstanbul, Türkiye</div>
-              </div>
-            </div>
-
-            <div class="section-divider"></div>
-            <div class="flex items-center gap-4">
-              <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"><i data-lucide="github" class="w-5 h-5"></i></a>
-              <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-              <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-              <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="site-footer py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-        <div>
-          <a href="#" class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-violet flex items-center justify-center text-white font-bold text-sm">N</div>
-            <span class="text-lg font-bold">Nokta<span class="text-accent-light">code</span></span>
+        <!-- CTA Buttons -->
+        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#contact"
+            class="btn-glow pulse-ring px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-violet text-white font-semibold text-base shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all"
+            data-i18n="heroCta"
+          >
+            İletişime Geç
           </a>
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" data-i18n="footerDesc">Modern teknolojiler ile dijital dönüşümünüzü hızlandırıyoruz.</p>
+          <a
+            href="#projects"
+            class="btn-outline group px-8 py-4 rounded-xl font-medium text-base flex items-center gap-2"
+            data-i18n="heroSecondary"
+          >
+            Projelerimizi İncele
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
         </div>
 
-        <div>
-          <h4 class="text-sm font-semibold mb-4" data-i18n="footerQuickLinks">Hızlı Linkler</h4>
-          <ul class="space-y-2">
-            <li><a href="#services" class="text-sm transition-colors" style="color: var(--text-secondary);" data-i18n="navServices">Hizmetler</a></li>
-            <li><a href="#about" class="text-sm transition-colors" style="color: var(--text-secondary);" data-i18n="navAbout">Hakkımızda</a></li>
-            <li><a href="#projects" class="text-sm transition-colors" style="color: var(--text-secondary);" data-i18n="navProjects">Projeler</a></li>
-            <li><a href="#contact" class="text-sm transition-colors" style="color: var(--text-secondary);" data-i18n="navContact">İletişim</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-sm font-semibold mb-4" data-i18n="footerContact">İletişim</h4>
-          <ul class="space-y-2">
-            <li class="text-sm" style="color: var(--text-secondary);" data-i18n="contactEmailValue">info@noktacode.com</li>
-            <li class="text-sm" style="color: var(--text-secondary);" data-i18n="contactPhoneValue">+90 (555) 123 45 67</li>
-            <li class="text-sm" style="color: var(--text-secondary);" data-i18n="contactAddressValue">İstanbul, Türkiye</li>
-          </ul>
+        <!-- Tech Stack -->
+        <div class="reveal mt-20 flex items-center justify-center gap-8 text-sm" style="color: var(--text-muted)">
+          <span>React</span>
+          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span>Next.js</span>
+          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span>Node.js</span>
+          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span>Python</span>
+          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span>AWS</span>
+          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span>Flutter</span>
         </div>
       </div>
 
-      <div class="section-divider mb-8"></div>
-      <div class="text-center text-sm" style="color: var(--text-muted);" data-i18n="footerRights">© 2026 Noktacode. Tüm hakları saklıdır.</div>
-    </div>
-  </footer>
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        style="color: var(--text-muted)"
+      >
+        <div
+          class="w-6 h-10 rounded-full border-2 flex items-start justify-center p-1"
+          style="border-color: var(--text-muted)"
+        >
+          <div class="w-1.5 h-3 rounded-full animate-bounce" style="background: var(--text-secondary)"></div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Scripts -->
-  <script src="js/translations.js"></script>
-  <script src="js/main.js"></script>
-</body>
+    <!-- ========== SERVICES SECTION ========== -->
+    <section id="services" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="servicesTitle">Hizmetlerimiz</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="servicesSubtitle">
+            İşletmenizin ihtiyaçlarına özel, son teknoloji çözümler sunuyoruz.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="monitor" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceWebTitle">Web Geliştirme</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceWebDesc">
+              Modern ve performanslı web uygulamaları geliştiriyoruz. React, Next.js, Vue.js ve daha fazlası ile
+              projelerinizi hayata geçiriyoruz.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="smartphone" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceMobileTitle">Mobil Uygulama</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceMobileDesc">
+              iOS ve Android platformları için native ve cross-platform mobil uygulamalar geliştiriyoruz.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="palette" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceUiTitle">UI/UX Tasarım</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceUiDesc">
+              Kullanıcı deneyimini ön plana çıkaran, modern ve estetik arayüz tasarımları oluşturuyoruz.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="cloud" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceCloudTitle">Bulut Çözümleri</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceCloudDesc">
+              AWS, Azure ve Google Cloud altyapıları ile ölçeklenebilir ve güvenilir bulut çözümleri sunuyoruz.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="plug" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceApiTitle">API Entegrasyonu</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceApiDesc">
+              Sistemlerinizi birbirine bağlayan güçlü API çözümleri ve üçüncü parti entegrasyonlar geliştiriyoruz.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="service-icon mb-4"><i data-lucide="lightbulb" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-semibold mb-2" data-i18n="serviceConsultTitle">Yazılım Danışmanlığı</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceConsultDesc">
+              Teknoloji seçimi, mimari tasarım ve dijital dönüşüm süreçlerinizde uzman danışmanlık hizmeti veriyoruz.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal-left">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="aboutTitle">Hakkımızda</h2>
+            <p class="text-accent-light font-medium mb-6" data-i18n="aboutSubtitle">
+              Tutkuyla kod yazıyoruz, mükemmellikle teslim ediyoruz.
+            </p>
+            <p class="leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="aboutText1">
+              Noktacode olarak, yazılım dünyasında yenilikçi çözümler üretmeye odaklanmış bir teknoloji firmasıyız.
+              Müşterilerimizin dijital dönüşüm yolculuğunda güvenilir bir iş ortağı olmayı hedefliyoruz.
+            </p>
+            <p class="leading-relaxed" style="color: var(--text-secondary)" data-i18n="aboutText2">
+              Deneyimli ekibimiz ile en son teknolojileri kullanarak, işletmelerin ihtiyaçlarına özel yazılım çözümleri
+              geliştiriyoruz. Her projede kalite, performans ve kullanıcı deneyimini ön planda tutuyoruz.
+            </p>
+          </div>
+
+          <div class="reveal-right grid grid-cols-2 gap-6">
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="150">0</div>
+              <div class="text-sm mt-2" style="color: var(--text-secondary)" data-i18n="statProjects">
+                Tamamlanan Proje
+              </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="80">0</div>
+              <div class="text-sm mt-2" style="color: var(--text-secondary)" data-i18n="statClients">Mutlu Müşteri</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="5">0</div>
+              <div class="text-sm mt-2" style="color: var(--text-secondary)" data-i18n="statExperience">
+                Yıl Tecrübe
+              </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="30">0</div>
+              <div class="text-sm mt-2" style="color: var(--text-secondary)" data-i18n="statTech">Teknoloji</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="projectsTitle">Projelerimiz</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="projectsSubtitle">
+            Geliştirdiğimiz bazı projeler ve kullandığımız teknolojiler.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+          <!-- Project 1 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="shopping-cart" class="w-5 h-5 text-emerald-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project1Title">E-Ticaret Platformu</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project1Desc">
+                Yüksek trafikli, ölçeklenebilir e-ticaret çözümü. Gerçek zamanlı stok yönetimi ve ödeme entegrasyonları.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Next.js</span><span class="tech-tag">Node.js</span
+                ><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Stripe</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-rose-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="heart-pulse" class="w-5 h-5 text-rose-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project2Title">Sağlık Takip Uygulaması</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project2Desc">
+                Hastaların sağlık verilerini takip eden mobil uygulama. Doktor-hasta iletişim modülü dahil.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span
+                ><span class="tech-tag">Dart</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="bar-chart-3" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project3Title">Fintech Dashboard</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project3Desc">
+                Finansal verilerin gerçek zamanlı görselleştirildiği analitik dashboard. Gelişmiş grafik ve raporlama.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">React</span><span class="tech-tag">D3.js</span
+                ><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="truck" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project4Title">Lojistik Yönetim Sistemi</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project4Desc">
+                Filo takibi, rota optimizasyonu ve teslimat yönetimi için kapsamlı lojistik platformu.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Vue.js</span><span class="tech-tag">Go</span><span class="tech-tag">MongoDB</span
+                ><span class="tech-tag">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-purple-500/20 border border-violet-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="graduation-cap" class="w-5 h-5 text-violet-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project5Title">Eğitim Portalı</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project5Desc">
+                Online eğitim platformu. Video dersler, canlı sınıflar ve interaktif sınav modülleri.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Next.js</span><span class="tech-tag">WebRTC</span
+                ><span class="tech-tag">Redis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card glass-card rounded-2xl p-6">
+            <div class="project-content">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/20 flex items-center justify-center"
+                >
+                  <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold" data-i18n="project6Title">IoT Kontrol Paneli</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary)" data-i18n="project6Desc">
+                Akıllı cihazların uzaktan izlenmesi ve yönetimi için IoT dashboard uygulaması.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">React</span><span class="tech-tag">MQTT</span
+                ><span class="tech-tag">AWS IoT</span><span class="tech-tag">Grafana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="contactTitle">İletişim</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="contactSubtitle">
+            Projenizi konuşalım. Size en kısa sürede dönüş yapacağız.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <!-- Contact Form — FormSubmit.co -->
+          <div class="lg:col-span-3 reveal-left">
+            <form id="contactForm" action="https://formsubmit.co/okocadere@gmail.com" method="POST" class="space-y-5">
+              <!-- FormSubmit config -->
+              <input type="hidden" name="_subject" value="Noktacode — Yeni İletişim Mesajı" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" id="formNext" value="" />
+              <input type="text" name="_honey" style="display: none" />
+
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  class="form-input w-full px-5 py-4 rounded-xl text-sm"
+                  data-i18n-placeholder="contactName"
+                  placeholder="Adınız Soyadınız"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  class="form-input w-full px-5 py-4 rounded-xl text-sm"
+                  data-i18n-placeholder="contactEmail"
+                  placeholder="E-posta Adresiniz"
+                />
+              </div>
+              <div>
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  class="form-input w-full px-5 py-4 rounded-xl text-sm resize-none"
+                  data-i18n-placeholder="contactMessage"
+                  placeholder="Mesajınız"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn-glow w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-violet text-white font-semibold text-sm shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all flex items-center justify-center gap-2"
+              >
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span data-i18n="contactSend">Mesaj Gönder</span>
+              </button>
+            </form>
+
+            <div
+              id="formSuccess"
+              class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+              data-i18n="contactSuccess"
+            >
+              Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="lg:col-span-2 reveal-right">
+            <div class="glass-card rounded-2xl p-8 space-y-8">
+              <h3 class="text-lg font-semibold" data-i18n="contactInfoTitle">İletişim Bilgileri</h3>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0"
+                >
+                  <i data-lucide="mail" class="w-5 h-5 text-accent-light"></i>
+                </div>
+                <div>
+                  <div class="text-sm mb-1" style="color: var(--text-secondary)" data-i18n="contactEmailLabel">
+                    E-posta
+                  </div>
+                  <div class="text-sm font-medium" data-i18n="contactEmailValue">okocadere@gmail.com</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0"
+                >
+                  <i data-lucide="phone" class="w-5 h-5 text-accent-light"></i>
+                </div>
+                <div>
+                  <div class="text-sm mb-1" style="color: var(--text-secondary)" data-i18n="contactPhoneLabel">
+                    Telefon
+                  </div>
+                  <div class="text-sm font-medium" data-i18n="contactPhoneValue">+90 (555) 123 45 67</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0"
+                >
+                  <i data-lucide="map-pin" class="w-5 h-5 text-accent-light"></i>
+                </div>
+                <div>
+                  <div class="text-sm mb-1" style="color: var(--text-secondary)" data-i18n="contactAddressLabel">
+                    Adres
+                  </div>
+                  <div class="text-sm font-medium" data-i18n="contactAddressValue">İstanbul, Türkiye</div>
+                </div>
+              </div>
+
+              <div class="section-divider"></div>
+              <div class="flex items-center gap-4">
+                <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"
+                  ><i data-lucide="github" class="w-5 h-5"></i
+                ></a>
+                <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"
+                  ><i data-lucide="linkedin" class="w-5 h-5"></i
+                ></a>
+                <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"
+                  ><i data-lucide="twitter" class="w-5 h-5"></i
+                ></a>
+                <a href="#" class="social-icon w-10 h-10 rounded-lg flex items-center justify-center"
+                  ><i data-lucide="instagram" class="w-5 h-5"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div>
+            <a href="#" class="flex items-center gap-2 mb-4">
+              <div
+                class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-violet flex items-center justify-center text-white font-bold text-sm"
+              >
+                N
+              </div>
+              <span class="text-lg font-bold">Nokta<span class="text-accent-light">code</span></span>
+            </a>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="footerDesc">
+              Modern teknolojiler ile dijital dönüşümünüzü hızlandırıyoruz.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-4" data-i18n="footerQuickLinks">Hızlı Linkler</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#services"
+                  class="text-sm transition-colors"
+                  style="color: var(--text-secondary)"
+                  data-i18n="navServices"
+                  >Hizmetler</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-sm transition-colors"
+                  style="color: var(--text-secondary)"
+                  data-i18n="navAbout"
+                  >Hakkımızda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  class="text-sm transition-colors"
+                  style="color: var(--text-secondary)"
+                  data-i18n="navProjects"
+                  >Projeler</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-sm transition-colors"
+                  style="color: var(--text-secondary)"
+                  data-i18n="navContact"
+                  >İletişim</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-4" data-i18n="footerContact">İletişim</h4>
+            <ul class="space-y-2">
+              <li class="text-sm" style="color: var(--text-secondary)" data-i18n="contactEmailValue">
+                okocadere@gmail.com
+              </li>
+              <li class="text-sm" style="color: var(--text-secondary)" data-i18n="contactPhoneValue">
+                +90 (555) 123 45 67
+              </li>
+              <li class="text-sm" style="color: var(--text-secondary)" data-i18n="contactAddressValue">
+                İstanbul, Türkiye
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-divider mb-8"></div>
+        <div class="text-center text-sm" style="color: var(--text-muted)" data-i18n="footerRights">
+          © 2026 Noktacode. Tüm hakları saklıdır.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
