@@ -55,8 +55,7 @@ function applyTheme(theme) {
 // LANGUAGE SYSTEM
 // ========================================
 // Auto-detect browser language (fallback to TR for Turkish speakers, EN for everyone else)
-let currentLang = localStorage.getItem("noktacode-lang") || 
-  (navigator.language.startsWith("tr") ? "tr" : "en");
+let currentLang = localStorage.getItem("noktacode-lang") || (navigator.language.startsWith("tr") ? "tr" : "en");
 
 function initLanguageSystem() {
   applyTranslations(currentLang);
@@ -125,6 +124,16 @@ function applyTranslations(lang) {
     const metaKeywords = document.getElementById("metaKeywords");
     if (metaKeywords) metaKeywords.content = t.seoKeywords;
   }
+  if (t.seoOgTitle) {
+    const ogTitle = document.getElementById("ogTitle");
+    if (ogTitle) ogTitle.content = t.seoOgTitle;
+    const twitterTitle = document.getElementById("twitterTitle");
+    if (twitterTitle) twitterTitle.content = t.seoOgTitle;
+  }
+  if (t.seoOgDescription) {
+    const ogDescription = document.getElementById("ogDescription");
+    if (ogDescription) ogDescription.content = t.seoOgDescription;
+    const twitterDescription = document.getElementById("twitterDescription");
     if (twitterDescription) twitterDescription.content = t.seoOgDescription;
   }
 
@@ -294,7 +303,7 @@ function initContactForm() {
   // Set the _next redirect to the current page
   const nextInput = document.getElementById("formNext");
   if (nextInput) {
-    nextInput.value = window.location.href;
+    nextInput.value = globalThis.location.href;
   }
 
   form.addEventListener("submit", (e) => {
