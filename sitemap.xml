@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- Homepage - Highest priority -->
+  <url>
+    <loc>https://noktacode.com/</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noktacode.com/" />
+  </url>
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://noktacode.com/#services</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#services" />
+  </url>
+
+  <!-- Technologies Section -->
+  <url>
+    <loc>https://noktacode.com/#technologies</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#technologies" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#technologies" />
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://noktacode.com/#about</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#about" />
+  </url>
+
+  <!-- Process Section -->
+  <url>
+    <loc>https://noktacode.com/#process</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#process" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#process" />
+  </url>
+
+  <!-- Projects Section -->
+  <url>
+    <loc>https://noktacode.com/#projects</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#projects" />
+  </url>
+
+  <!-- Testimonials Section -->
+  <url>
+    <loc>https://noktacode.com/#testimonials</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#testimonials" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#testimonials" />
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://noktacode.com/#contact</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://noktacode.com/#contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noktacode.com/#contact" />
+  </url>
+</urlset>

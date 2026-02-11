@@ -47,14 +47,16 @@ function toggleTheme() {
 }
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.dataset.theme = theme;
   // All color switching is handled via CSS custom properties — no class toggling needed.
 }
 
 // ========================================
 // LANGUAGE SYSTEM
 // ========================================
-let currentLang = localStorage.getItem("noktacode-lang") || "tr";
+// Auto-detect browser language (fallback to TR for Turkish speakers, EN for everyone else)
+let currentLang = localStorage.getItem("noktacode-lang") || 
+  (navigator.language.startsWith("tr") ? "tr" : "en");
 
 function initLanguageSystem() {
   applyTranslations(currentLang);
@@ -87,7 +89,7 @@ function applyTranslations(lang) {
 
   // Text content translations
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
+    const key = el.dataset.i18n;
     if (t[key]) {
       el.textContent = t[key];
     }
@@ -95,7 +97,7 @@ function applyTranslations(lang) {
 
   // HTML content translations (for spans inside text)
   document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-html");
+    const key = el.dataset.i18nHtml;
     if (t[key]) {
       el.innerHTML = t[key];
     }
@@ -103,11 +105,34 @@ function applyTranslations(lang) {
 
   // Placeholder translations
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-placeholder");
+    const key = el.dataset.i18nPlaceholder;
     if (t[key]) {
       el.placeholder = t[key];
     }
   });
+
+  // SEO Meta Tags - Dynamic update when language changes
+  if (t.seoTitle) {
+    document.getElementById("pageTitle").textContent = t.seoTitle;
+    const metaTitle = document.getElementById("metaTitle");
+    if (metaTitle) metaTitle.content = t.seoTitle;
+  }
+  if (t.seoDescription) {
+    const metaDescription = document.getElementById("metaDescription");
+    if (metaDescription) metaDescription.content = t.seoDescription;
+  }
+  if (t.seoKeywords) {
+    const metaKeywords = document.getElementById("metaKeywords");
+    if (metaKeywords) metaKeywords.content = t.seoKeywords;
+  }
+    if (twitterDescription) twitterDescription.content = t.seoOgDescription;
+  }
+
+  // Update og:locale based on language
+  const ogLocale = document.getElementById("ogLocale");
+  if (ogLocale) {
+    ogLocale.content = lang === "tr" ? "tr_TR" : "en_US";
+  }
 }
 
 // ========================================
@@ -116,8 +141,8 @@ function applyTranslations(lang) {
 function initNavbar() {
   const navbar = document.querySelector(".navbar");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
+  globalThis.addEventListener("scroll", () => {
+    if (globalThis.scrollY > 50) {
       navbar.classList.add("scrolled");
     } else {
       navbar.classList.remove("scrolled");
@@ -128,12 +153,12 @@ function initNavbar() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
 
-  window.addEventListener("scroll", () => {
+  globalThis.addEventListener("scroll", () => {
     let current = "";
     sections.forEach((section) => {
       const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute("id");
+      if (globalThis.scrollY >= sectionTop) {
+        current = section.id;
       }
     });
 
@@ -233,7 +258,7 @@ function initCounterAnimation() {
 }
 
 function animateCounter(el) {
-  const target = parseInt(el.getAttribute("data-count"), 10);
+  const target = Number.parseInt(el.dataset.count, 10);
   const duration = 2000;
   const startTime = performance.now();
 
@@ -364,9 +389,9 @@ function initScrollProgress() {
   const progressBar = document.getElementById("scrollProgress");
   if (!progressBar) return;
 
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  globalThis.addEventListener("scroll", () => {
+    const scrollTop = globalThis.scrollY;
+    const docHeight = document.documentElement.scrollHeight - globalThis.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
 
     progressBar.style.width = scrollPercent + "%";

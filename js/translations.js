@@ -1,5 +1,15 @@
 const translations = {
   tr: {
+    // SEO Meta Tags (for dynamic language switching)
+    seoTitle: "Noktacode | .NET, Angular, Java, Python Yazılım Geliştirme İstanbul",
+    seoDescription:
+      "İstanbul merkezli yazılım firması. .NET, Angular, Java, Python ile kurumsal web, mobil ve bulut çözümleri. AWS, React, Node.js uzmanlarıyla dijital dönüşümünüzü hızlandırıyoruz.",
+    seoKeywords:
+      "yazılım geliştirme, .NET geliştirme, Angular geliştirme, Java programlama, Python geliştirme, web uygulama geliştirme, mobil uygulama geliştirme, bulut çözümleri, AWS, Azure, React, Node.js, Docker, Kubernetes, API geliştirme, mikroservis mimarisi, kurumsal yazılım, İstanbul yazılım firması, Türkiye yazılım şirketi, yazılım danışmanlığı, dijital dönüşüm, Noktacode",
+    seoOgTitle: "Noktacode | .NET, Angular, Java, Python Yazılım Geliştirme",
+    seoOgDescription:
+      "İstanbul merkezli yazılım firması. .NET, Angular, Java, Python ile kurumsal çözümler. Dijital dönüşümünüzü hızlandırıyoruz.",
+
     // Navbar
     navServices: "Hizmetler",
     navAbout: "Hakkımızda",
@@ -122,6 +132,16 @@ const translations = {
   },
 
   en: {
+    // SEO Meta Tags (for dynamic language switching)
+    seoTitle: "Noktacode | .NET, Angular, Java, Python Software Development Istanbul",
+    seoDescription:
+      "Istanbul-based software company. Enterprise web, mobile and cloud solutions with .NET, Angular, Java, Python. Accelerating your digital transformation with AWS, React, Node.js experts.",
+    seoKeywords:
+      "software development, .NET development, Angular development, Java programming, Python development, web application development, mobile app development, cloud solutions, AWS, Azure, React, Node.js, Docker, Kubernetes, API development, microservices architecture, enterprise software, Istanbul software company, Turkey software development, software consulting, digital transformation, Noktacode",
+    seoOgTitle: "Noktacode | .NET, Angular, Java, Python Software Development",
+    seoOgDescription:
+      "Istanbul-based software company. Enterprise solutions with .NET, Angular, Java, Python. Accelerating your digital transformation.",
+
     // Navbar
     navServices: "Services",
     navAbout: "About",
