@@ -504,6 +504,7 @@ Google'a "sitede hangi sayfalar var, ne sıklıkla güncelleniyor" bilgisi verir
 **CEVAP:** ✅ Evet, doğrudan ilişkili! İşte tam akış:
 
 #### 8.1.1 Sayfa Yükleme Sırası
+
 ```
 1. HTML Parse → Türkçe meta taglar görünür (DEFAULT)
    ├─ <title>Noktacode | .NET, Angular... İstanbul</title>
@@ -522,6 +523,7 @@ Google'a "sitede hangi sayfalar var, ne sıklıkla güncelleniyor" bilgisi verir
 ```
 
 #### 8.1.2 Neden HTML'de Türkçe Default?
+
 **3 Stratejik Sebep:**
 
 1. **Google Bot İlk Tarama (No-JS Fallback)**
@@ -542,6 +544,7 @@ Google'a "sitede hangi sayfalar var, ne sıklıkla güncelleniyor" bilgisi verir
 #### 8.1.3 Dinamik Güncelleme Mekanizması
 
 **main.js - applyTranslations() Fonksiyonu:**
+
 ```javascript
 // SEO Meta Tags - Dynamic update when language changes
 if (t.seoTitle) {
@@ -558,6 +561,7 @@ if (t.seoKeywords) {
 ```
 
 **translations.js - SEO Değerleri:**
+
 ```javascript
 tr: {
   seoTitle: "...İstanbul",        // HTML'deki default ile AYNI
@@ -572,6 +576,7 @@ en: {
 #### 8.1.4 Google Bot Render Süreci
 
 **Modern Google Bot (2023+):**
+
 1. HTML parse → TR meta taglar görür
 2. JavaScript render → applyTranslations() çalışır
 3. localStorage boş → default "tr" kullanılır
@@ -579,6 +584,7 @@ en: {
 5. ✅ Google indexler: Türkçe içerik
 
 **Kullanıcı EN'ye Geçerse:**
+
 1. localStorage.setItem("noktacode-lang", "en")
 2. applyTranslations("en") çağrılır
 3. Meta taglar EN'ye güncellenir
@@ -720,10 +726,12 @@ if (t.seoDescription) {
 ### Öncelik 1: HEMEN (1-3 Gün İçinde)
 
 #### 1.1 Google Search Console Kurulumu
+
 **Süre:** 30 dakika  
 **Zorunluluk:** 🔴 KRİTİK
 
 **Adımlar:**
+
 1. https://search.google.com/search-console adresine git
 2. "Özellik Ekle" → "URL Ön Eki" seç
 3. `https://noktacode.com` gir
@@ -735,6 +743,7 @@ if (t.seoDescription) {
 6. Sitemap gönder: `https://noktacode.com/sitemap.xml`
 
 **Beklenen Fayda:**
+
 - Google tarafından site tanınması (7-14 gün içinde indexlenme)
 - Hangi kelimelerde sıralandığını görebilme
 - Teknik hataları tespit etme
@@ -743,10 +752,12 @@ if (t.seoDescription) {
 ---
 
 #### 1.2 OG Image (Open Graph Image) Oluşturma
+
 **Süre:** 1-2 saat  
 **Zorunluluk:** 🟠 ÖNEMLİ
 
 **Gereksinimler:**
+
 - **Boyut:** 1200x630 px (Facebook/LinkedIn standart)
 - **Format:** JPG veya PNG
 - **Dosya boyutu:** < 1 MB
@@ -757,11 +768,13 @@ if (t.seoDescription) {
   - Slogan: "Dijital Dünyada Fark Yaratıyoruz"
 
 **Tasarım Araçları:**
+
 - Canva (https://canva.com) - Kolay, template'ler var
 - Figma - Profesyonel tasarım
 - Adobe Photoshop
 
 **Dosya Konumu:**
+
 ```
 NoktacodeWebsite/
 ├─ og-image.jpg          ← Buraya kaydet (1200x630)
@@ -769,6 +782,7 @@ NoktacodeWebsite/
 ```
 
 **Beklenen Fayda:**
+
 - Sosyal medyada paylaşım %300 artış (görsel çekicilik)
 - WhatsApp/LinkedIn/Facebook'ta profesyonel görünüm
 - CTR (tıklanma oranı) artışı
@@ -776,10 +790,12 @@ NoktacodeWebsite/
 ---
 
 #### 1.3 Google Analytics 4 (GA4) Entegrasyonu
+
 **Süre:** 20 dakika  
 **Zorunluluk:** 🟠 ÖNEMLİ
 
 **Adımlar:**
+
 1. https://analytics.google.com adresine git
 2. "Hesap Oluştur" → "Noktacode" adında özellik ekle
 3. Ölçüm Kimliği al (örn: `G-XXXXXXXXXX`)
@@ -789,13 +805,16 @@ NoktacodeWebsite/
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
    <script>
      globalThis.dataLayer = globalThis.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-     gtag('config', 'G-XXXXXXXXXX');
+     function gtag() {
+       dataLayer.push(arguments);
+     }
+     gtag("js", new Date());
+     gtag("config", "G-XXXXXXXXXX");
    </script>
    ```
 
 **Takip Edilecek Metrikler:**
+
 - Günlük ziyaretçi sayısı
 - Bounce rate (hedef: < %60)
 - Ortalama oturum süresi (hedef: > 2 dakika)
@@ -803,6 +822,7 @@ NoktacodeWebsite/
 - Kullanıcı kaynağı (organik/sosyal medya/direkt)
 
 **Beklenen Fayda:**
+
 - Hangi sayfalarda kullanıcılar daha fazla zaman geçiriyor?
 - Hangi CTA'lar (Call to Action) daha çok tıklanıyor?
 - Mobil vs Desktop kullanıcı dağılımı
@@ -813,16 +833,20 @@ NoktacodeWebsite/
 ### Öncelik 2: 1-2 Hafta İçinde
 
 #### 2.1 Favicon Güncelleme (Profesyonel Logo)
+
 **Süre:** 30 dakika  
 **Zorunluluk:** 🟡 TAVSİYE EDİLİR
 
 **Şu Anki Durum:**
+
 ```html
 <link rel="icon" href="data:image/svg+xml,<svg>...</svg>" />
 ```
+
 **Emoji favicon** (⟨⟩) kullanılıyor → Profesyonel değil
 
 **Yapılması Gerekenler:**
+
 1. Noktacode logosu tasarla (N harfi, gradient)
 2. Favicon generator kullan: https://realfavicongenerator.net
 3. Şu boyutları oluştur:
@@ -832,12 +856,13 @@ NoktacodeWebsite/
    - `apple-touch-icon.png` (180x180)
 4. `index.html` head'e ekle:
    ```html
-   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
    ```
 
 **Beklenen Fayda:**
+
 - Tarayıcı tab'ında profesyonel logo
 - Marka tutarlılığı
 - Google arama sonuçlarında favicon görünümü
@@ -845,57 +870,69 @@ NoktacodeWebsite/
 ---
 
 #### 2.2 Schema Markup Genişletme
+
 **Süre:** 1-2 saat  
 **Zorunluluk:** 🟡 TAVSİYE EDİLİR
 
 **Eklenecek Yeni Schema'lar:**
 
 **1. FAQ Schema (Sıkça Sorulan Sorular)**
+
 ```json
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "Hangi teknolojileri kullanıyorsunuz?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": ".NET, Angular, Java, Python, React, Node.js, AWS, Azure..."
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hangi teknolojileri kullanıyorsunuz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": ".NET, Angular, Java, Python, React, Node.js, AWS, Azure..."
+      }
     }
-  }]
+  ]
 }
 ```
+
 **SEO Etkisi:** Google'da "Sıkça Sorulan Sorular" kutucuğu çıkar → %40 CTR artışı
 
 **2. Breadcrumb Schema (Sayfa Hiyerarşisi)**
+
 ```json
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Ana Sayfa",
-    "item": "https://noktacode.com"
-  }, {
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Hizmetler",
-    "item": "https://noktacode.com#services"
-  }]
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://noktacode.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hizmetler",
+      "item": "https://noktacode.com#services"
+    }
+  ]
 }
 ```
+
 **SEO Etkisi:** Google'da breadcrumb görünümü → Kullanıcı sitede nerede olduğunu anlar
 
 ---
 
 #### 2.3 Performance Optimization (PageSpeed)
+
 **Süre:** 2-4 saat  
 **Zorunluluk:** 🟡 TAVSİYE EDİLİR
 
 **Hedef:** Lighthouse Performance Score **90+/100**
 
 **Yapılacaklar:**
+
 1. **Tailwind CSS CDN → Self-Hosted**
    - Şu an: `<script src="https://cdn.tailwindcss.com"></script>` → Yavaş
    - Yapılacak: Tailwind CLI ile build → `style.css`'e dahil et
@@ -917,6 +954,7 @@ NoktacodeWebsite/
    - **Kazanç:** 100-200ms rendering time azalması
 
 **Test Araçları:**
+
 - Google PageSpeed Insights: https://pagespeed.web.dev
 - WebPageTest: https://webpagetest.org
 - GTmetrix: https://gtmetrix.com
@@ -926,16 +964,19 @@ NoktacodeWebsite/
 ### Öncelik 3: 1 Ay İçinde
 
 #### 3.1 Blog Section Eklenmesi
+
 **Süre:** 1-2 gün (kodlama) + sürekli içerik üretimi  
 **Zorunluluk:** 🟠 ÖNEMLİ (Uzun Vadeli SEO)
 
 **Neden Kritik?**
+
 - Google **fresh content** (taze içerik) seviyor
 - Long-tail keywords için fırsat (.NET vs Java, Angular vs React)
 - Backlink kazanma potansiyeli (diğer siteler blog yazılarına link verir)
 - Domain authority artışı
 
 **Teknik Yapı:**
+
 ```
 NoktacodeWebsite/
 ├─ blog/
@@ -946,6 +987,7 @@ NoktacodeWebsite/
 ```
 
 **İlk 5 Blog Yazısı Önerileri:**
+
 1. ".NET vs Java: 2026'da Hangisi Daha İyi?" → SEO keyword: "dotnet java karşılaştırma"
 2. "Angular Nedir? Neden React'tan Daha İyi Olabilir?" → SEO: "angular nedir"
 3. "AWS vs Azure: Bulut Platformu Seçim Rehberi" → SEO: "aws azure fark"
@@ -953,17 +995,19 @@ NoktacodeWebsite/
 5. "Python ile Veri Analizi: Başlangıç Rehberi" → SEO: "python veri analizi"
 
 **Blog Schema (ArticleSchema):**
+
 ```json
 {
   "@type": "BlogPosting",
   "headline": ".NET vs Java: 2026'da Hangisi Daha İyi?",
-  "author": {"@type": "Organization", "name": "Noktacode"},
+  "author": { "@type": "Organization", "name": "Noktacode" },
   "datePublished": "2026-02-15",
   "image": "blog-featured.jpg"
 }
 ```
 
 **Beklenen SEO Etkisi (6-12 Ay):**
+
 - Organik trafik %300-500 artış
 - 10-15 farklı longtail keyword'de sıralama
 - Domain Authority (DA) 30-40'a yükselir
@@ -971,20 +1015,24 @@ NoktacodeWebsite/
 ---
 
 #### 3.2 Testimonial Görselleri (Gerçek Müşteriler)
+
 **Süre:** 1-2 saat  
 **Zorunluluk:** 🟡 TAVSİYE EDİLİR
 
 **Şu Anki Durum:**
+
 - Testimonial metinleri var
 - Ama **fotoğraf/logo YOK** → Güven eksikliği
 
 **Yapılacaklar:**
+
 1. Gerçek müşterilerden izin al (GDPR/KVKK)
 2. Profil fotoğrafları ekle (150x150 px, circle crop)
 3. Şirket logoları ekle (TechStore, LogiFlow, HealthTrack)
 4. LinkedIn profil linkleri ekle (doğrulama için)
 
 **Kod Güncellemesi:**
+
 ```html
 <div class="testimonial-card">
   <img src="assets/testimonials/mehmet-yilmaz.jpg" class="testimonial-avatar" />
@@ -1000,6 +1048,7 @@ NoktacodeWebsite/
 ```
 
 **SEO Etkisi:**
+
 - Review schema eklenebilir → Google'da yıldız gösterimi
 - Trust signals (güven sinyalleri) → Conversion rate artışı
 
@@ -1008,6 +1057,7 @@ NoktacodeWebsite/
 ### Öncelik 4: 3-6 Ay İçinde
 
 #### 4.1 Backlink Stratejisi (Off-Page SEO)
+
 **Süre:** Sürekli çaba (aylık 2-3 saat)  
 **Zorunluluk:** 🔴 KRİTİK (Uzun Vadeli)
 
@@ -1016,18 +1066,21 @@ NoktacodeWebsite/
 **Backlink Kaynakları:**
 
 **1. Directory Submissions (Dizin Kayıtları)**
+
 - https://startupistanbul.com (Türk startupları)
 - https://clutch.co (B2B yazılım firmaları)
-- https://goodfirms.co 
+- https://goodfirms.co
 - https://topwebsitelist.com
 - **Kazanç:** Domain Authority (DA) +5-10
 
 **2. Guest Posting (Misafir Yazarlık)**
+
 - Türk teknoloji bloglarına yazı yaz (Webrazzi, ShiftDelete.Net)
 - Yazının sonunda: "Bu makale Noktacode tarafından yazılmıştır" + link
 - **Kazanç:** Referral traffic + DA artışı
 
 **3. Sosyal Medya Profilleri**
+
 - LinkedIn Company Page → Noktacode
 - GitHub Organization → github.com/noktacode
 - Twitter/X → @noktacode
@@ -1035,16 +1088,19 @@ NoktacodeWebsite/
 - **Kazanç:** Brand mentions (marka bahsetmeleri)
 
 **4. Partner Linkler**
+
 - Müşteri sitelerinde "Partner" bölümünde yer alma
 - "Powered by Noktacode" footer linki
 - **Kazanç:** Dofollow backlink (en değerli)
 
 **5. PR ve Basın Bültenleri**
+
 - "Noktacode yeni proje tamamladı" haberleri
 - Lokal teknoloji sitelerine PR gönderimi
 - **Kazanç:** Haber sitelerinden backlink (yüksek DA)
 
 **Backlink Takip Araçları:**
+
 - Ahrefs (ücretli, en iyi)
 - SEMrush (ücretli)
 - Google Search Console → "Links" sekmesi (ücretsiz)
@@ -1052,15 +1108,18 @@ NoktacodeWebsite/
 ---
 
 #### 4.2 Case Study Section (Vaka Çalışmaları)
+
 **Süre:** 3-4 saat/proje  
 **Zorunluluk:** 🟡 TAVSİYE EDİLİR
 
 **Neden Gerekli?**
+
 - "Projects" section çok yüzeysel (2-3 cümle)
 - Detaylı case study → Conversion rate %50 artırır
 - Google "E-A-T" (Expertise, Authority, Trust) için kritik
 
 **Case Study Formatı:**
+
 ```
 # E-Ticaret Platformu Case Study
 
@@ -1093,6 +1152,7 @@ NoktacodeWebsite/
 ```
 
 **SEO Schema:**
+
 ```json
 {
   "@type": "CreativeWork",
@@ -1105,15 +1165,18 @@ NoktacodeWebsite/
 ---
 
 #### 4.3 Video İçerik (YouTube Entegrasyonu)
+
 **Süre:** 2-3 gün (video çekimi + montaj)  
 **Zorunluluk:** 🟢 İLERİ SEVİYE
 
 **Neden Video?**
+
 - Google video içerikleri boost ediyor (2024+ trend)
 - Kullanıcılar %80 daha fazla video izliyor (text vs video)
 - YouTube SEO → Google SEO'ya katkı (aynı şirket)
 
 **Video İçerik Önerileri:**
+
 1. **"Noktacode Tanıtım Videosu"** (1 dakika)
    - Ofis turları, ekip tanıtımı
    - Kullanılan teknolojiler
@@ -1130,6 +1193,7 @@ NoktacodeWebsite/
    - SEO: Her video için ayrı keyword
 
 **Video Schema:**
+
 ```json
 {
   "@type": "VideoObject",
@@ -1141,6 +1205,7 @@ NoktacodeWebsite/
 ```
 
 **SEO Etkisi:**
+
 - Google Video tab'inde görünürlük
 - "Video snippet" rich result → CTR %60 artış
 - YouTube subscribers → Direct traffic artışı
@@ -1150,21 +1215,26 @@ NoktacodeWebsite/
 ### Öncelik 5: 6-12 Ay (Sürekli İyileştirme)
 
 #### 5.1 A/B Testing (Conversion Optimization)
+
 **Araç:** Google Optimize (ücretsiz)  
 **Test Edilecekler:**
+
 - CTA buton renkleri (mavi vs yeşil)
 - Hero section başlık varyasyonları
 - Contact form field sayısı (3 vs 5 alan)
 
 #### 5.2 Multilingual Expansion (Dil Genişletme)
+
 **Hedef:** TR, EN, DE (Almanya pazarı)  
 **Neden:** Avrupa B2B pazarı için Almanca kritik
 
 #### 5.3 Chatbot Entegrasyonu
+
 **Araç:** Tawk.to (ücretsiz) veya Intercom  
 **Fayda:** Kullanıcı soruları anında cevapla → Conversion rate artışı
 
 #### 5.4 Mobile App (PWA)
+
 **Teknoloji:** Progressive Web App  
 **Fayda:** Ana ekrana ekle → Native app deneyimi
 
@@ -1172,13 +1242,13 @@ NoktacodeWebsite/
 
 ## 📊 Özet: 1 Yıllık SEO Roadmap
 
-| Zaman | Öncelikler | Beklenen Metrikler |
-|-------|------------|--------------------|
-| **0-1 Hafta** | Google Search Console, OG Image, GA4 | Site tanınması, ilk indexlenme |
-| **1 Ay** | Blog başlangıç, Favicon, Schema genişletme | Organik trafik 50-100/ay |
-| **3 Ay** | 10-15 backlink, 5 blog yazısı, Case studies | Organik trafik 200-500/ay, DA 20+ |
-| **6 Ay** | 20-30 backlink, Video içerik, YouTube kanalı | Organik trafik 1000+/ay, İlk 10 sıralama (5 keyword) |
-| **12 Ay** | A/B testing, DE dil desteği, PWA | Organik trafik 3000+/ay, İlk 3 sıralama (10 keyword) |
+| Zaman         | Öncelikler                                   | Beklenen Metrikler                                   |
+| ------------- | -------------------------------------------- | ---------------------------------------------------- |
+| **0-1 Hafta** | Google Search Console, OG Image, GA4         | Site tanınması, ilk indexlenme                       |
+| **1 Ay**      | Blog başlangıç, Favicon, Schema genişletme   | Organik trafik 50-100/ay                             |
+| **3 Ay**      | 10-15 backlink, 5 blog yazısı, Case studies  | Organik trafik 200-500/ay, DA 20+                    |
+| **6 Ay**      | 20-30 backlink, Video içerik, YouTube kanalı | Organik trafik 1000+/ay, İlk 10 sıralama (5 keyword) |
+| **12 Ay**     | A/B testing, DE dil desteği, PWA             | Organik trafik 3000+/ay, İlk 3 sıralama (10 keyword) |
 
 ---
 
