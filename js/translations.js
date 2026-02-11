@@ -18,6 +18,7 @@ const translations = {
     langToggle: "EN",
 
     // Hero
+    heroBadge: "Yazılım Çözüm Ortağınız",
     heroTitle: "Dijital Dünyada <span class='text-gradient'>Fark Yaratıyoruz</span>",
     heroSubtitle:
       "Modern teknolojiler ile işletmenizi geleceğe taşıyoruz. Yazılım çözümlerimizle dijital dönüşümünüzü hızlandırıyoruz.",
@@ -150,6 +151,7 @@ const translations = {
     langToggle: "TR",
 
     // Hero
+    heroBadge: "Your Software Solution Partner",
     heroTitle: "Making a <span class='text-gradient'>Difference</span> in the Digital World",
     heroSubtitle:
       "We elevate your business with modern technologies. Accelerate your digital transformation with our software solutions.",
