@@ -222,7 +222,7 @@ function initCounterAnimation() {
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   // Observe the about section
@@ -368,7 +368,7 @@ function initScrollProgress() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
-    
+
     progressBar.style.width = scrollPercent + "%";
   });
 }

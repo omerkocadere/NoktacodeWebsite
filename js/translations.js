@@ -83,13 +83,16 @@ const translations = {
     // Testimonials
     testimonialsTitle: "Müşterilerimiz Ne Diyor?",
     testimonialsSubtitle: "Birlikte çalıştığımız firmaların görüşleri.",
-    testimonial1Text: "\"Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik uzmanlıkları sayesinde hedeflerimize ulaştık.\"",
+    testimonial1Text:
+      '"Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik uzmanlıkları sayesinde hedeflerimize ulaştık."',
     testimonial1Name: "Mehmet Yılmaz",
     testimonial1Title: "CEO, TechStore",
-    testimonial2Text: "\"Kurumsal yazılım projemiz için Noktacode'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı teslimat yaptılar.\"",
+    testimonial2Text:
+      '"Kurumsal yazılım projemiz için Noktacode\'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı teslimat yaptılar."',
     testimonial2Name: "Ayşe Kaya",
     testimonial2Title: "CTO, LogiFlow",
-    testimonial3Text: "\"Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde ettik.\"",
+    testimonial3Text:
+      '"Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde ettik."',
     testimonial3Name: "Can Demir",
     testimonial3Title: "Kurucu, HealthTrack",
 
@@ -200,13 +203,16 @@ const translations = {
     // Testimonials
     testimonialsTitle: "What Our Clients Say?",
     testimonialsSubtitle: "Feedback from companies we've worked with.",
-    testimonial1Text: "\"The Noktacode team developed our e-commerce platform from scratch. We reached our goals thanks to their professional approach and technical expertise.\"",
+    testimonial1Text:
+      '"The Noktacode team developed our e-commerce platform from scratch. We reached our goals thanks to their professional approach and technical expertise."',
     testimonial1Name: "Mehmet Yılmaz",
     testimonial1Title: "CEO, TechStore",
-    testimonial2Text: "\"We chose Noktacode for our enterprise software project. They delivered flexibly and quickly by working with Agile processes.\"",
+    testimonial2Text:
+      '"We chose Noktacode for our enterprise software project. They delivered flexibly and quickly by working with Agile processes."',
     testimonial2Name: "Ayşe Kaya",
     testimonial2Title: "CTO, LogiFlow",
-    testimonial3Text: "\"They did a great job on our mobile app project. We achieved native performance for both iOS and Android.\"",
+    testimonial3Text:
+      '"They did a great job on our mobile app project. We achieved native performance for both iOS and Android."',
     testimonial3Name: "Can Demir",
     testimonial3Title: "Founder, HealthTrack",
 

@@ -46,7 +46,7 @@
     <script>
       (function () {
         var t = localStorage.getItem("noktacode-theme") || "dark";
-        document.documentElement.setAttribute("data-theme", t);
+        document.documentElement.dataset.theme = t;
       })();
     </script>
   </head>
@@ -618,10 +618,15 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
             </div>
             <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial1Text">
-              "Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik uzmanlıkları sayesinde hedeflerimize ulaştık."
+              "Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik
+              uzmanlıkları sayesinde hedeflerimize ulaştık."
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">M</div>
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold"
+              >
+                M
+              </div>
               <div>
                 <div class="font-semibold text-sm" data-i18n="testimonial1Name">Mehmet Yılmaz</div>
                 <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial1Title">CEO, TechStore</div>
@@ -639,10 +644,15 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
             </div>
             <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial2Text">
-              "Kurumsal yazılım projemiz için Noktacode'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı teslimat yaptılar."
+              "Kurumsal yazılım projemiz için Noktacode'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı
+              teslimat yaptılar."
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">A</div>
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold"
+              >
+                A
+              </div>
               <div>
                 <div class="font-semibold text-sm" data-i18n="testimonial2Name">Ayşe Kaya</div>
                 <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial2Title">CTO, LogiFlow</div>
@@ -660,13 +670,20 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
             </div>
             <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial3Text">
-              "Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde ettik."
+              "Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde
+              ettik."
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">C</div>
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold"
+              >
+                C
+              </div>
               <div>
                 <div class="font-semibold text-sm" data-i18n="testimonial3Name">Can Demir</div>
-                <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial3Title">Kurucu, HealthTrack</div>
+                <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial3Title">
+                  Kurucu, HealthTrack
+                </div>
               </div>
             </div>
           </div>
