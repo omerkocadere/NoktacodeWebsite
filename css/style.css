@@ -144,10 +144,45 @@ body {
   width: 100%;
 }
 
-/* Hamburger */
+/* Hamburger Button */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover { border-color: var(--accent); }
+
 .hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
   background-color: var(--hamburger-color);
   transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger-btn.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Mobile Menu */
@@ -360,6 +395,51 @@ body {
 }
 
 /* --------------------------------
+   Hero Content
+   -------------------------------- */
+.hero-title {
+  font-size: clamp(1.75rem, 5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tech-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .tech-dot { display: block; }
+  .tech-stack { gap: 8px 24px; }
+}
+
+/* --------------------------------
    Layout Utilities
    -------------------------------- */
 .section-divider {
@@ -509,4 +589,24 @@ body {
     top: -50%;
     left: -50%;
   }
+
+  /* Sections: tighter padding on mobile */
+  section { padding-top: 4rem; padding-bottom: 4rem; }
+  .section-divider { margin-bottom: 3rem; }
+
+  /* Cards: slightly less padding */
+  .glass-card { padding: 1.25rem; }
+
+  /* About stats: smaller text */
+  .stat-number { font-size: 1.75rem; }
+
+  /* Footer */
+  .site-footer { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+@media (max-width: 480px) {
+  /* Extra small: even tighter */
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .tech-stack { font-size: 0.75rem; gap: 8px 12px; }
 }

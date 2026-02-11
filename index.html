@@ -91,14 +91,10 @@
           </div>
 
           <!-- Mobile Hamburger -->
-          <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 p-2 group">
-            <span
-              class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"
-            ></span>
-            <span class="hamburger-line block w-6 h-0.5 group-[.open]:opacity-0"></span>
-            <span
-              class="hamburger-line block w-6 h-0.5 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"
-            ></span>
+          <button id="menuToggle" class="hamburger-btn md:hidden group">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
           </button>
         </div>
       </div>
@@ -129,7 +125,7 @@
       <div class="grid-pattern"></div>
       <div id="particles" class="absolute inset-0 z-[1] pointer-events-none"></div>
 
-      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+      <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-8 text-center pt-20">
         <!-- Badge -->
         <div class="reveal hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-8">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
@@ -138,7 +134,7 @@
 
         <!-- Title -->
         <h1
-          class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6"
+          class="reveal hero-title"
           data-i18n-html="heroTitle"
         >
           Dijital Dünyada <span class="text-gradient">Fark Yaratıyoruz</span>
@@ -146,8 +142,7 @@
 
         <!-- Subtitle -->
         <p
-          class="reveal text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-          style="color: var(--text-secondary)"
+          class="reveal hero-subtitle"
           data-i18n="heroSubtitle"
         >
           Modern teknolojiler ile işletmenizi geleceğe taşıyoruz. Yazılım çözümlerimizle dijital dönüşümünüzü
@@ -174,18 +169,18 @@
         </div>
 
         <!-- Tech Stack -->
-        <div class="reveal mt-20 flex items-center justify-center gap-8 text-sm" style="color: var(--text-muted)">
-          <span>React</span>
-          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
-          <span>Next.js</span>
-          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+        <div class="reveal tech-stack">
+          <span>.NET</span>
+          <span class="tech-dot"></span>
+          <span>Angular</span>
+          <span class="tech-dot"></span>
+          <span>Java</span>
+          <span class="tech-dot"></span>
           <span>Node.js</span>
-          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
-          <span>Python</span>
-          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
+          <span class="tech-dot"></span>
+          <span>React</span>
+          <span class="tech-dot"></span>
           <span>AWS</span>
-          <span class="w-1 h-1 rounded-full" style="background: var(--text-muted)"></span>
-          <span>Flutter</span>
         </div>
       </div>
 
@@ -340,8 +335,8 @@
                 Yüksek trafikli, ölçeklenebilir e-ticaret çözümü. Gerçek zamanlı stok yönetimi ve ödeme entegrasyonları.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Next.js</span><span class="tech-tag">Node.js</span
-                ><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Stripe</span>
+                <span class="tech-tag">Angular</span><span class="tech-tag">.NET</span
+                ><span class="tech-tag">SQL Server</span><span class="tech-tag">Azure</span>
               </div>
             </div>
           </div>
@@ -361,8 +356,8 @@
                 Hastaların sağlık verilerini takip eden mobil uygulama. Doktor-hasta iletişim modülü dahil.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span
-                ><span class="tech-tag">Dart</span>
+                <span class="tech-tag">Java</span><span class="tech-tag">Spring Boot</span
+                ><span class="tech-tag">PostgreSQL</span>
               </div>
             </div>
           </div>
@@ -382,8 +377,8 @@
                 Finansal verilerin gerçek zamanlı görselleştirildiği analitik dashboard. Gelişmiş grafik ve raporlama.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">React</span><span class="tech-tag">D3.js</span
-                ><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Angular</span><span class="tech-tag">.NET</span
+                ><span class="tech-tag">Python</span><span class="tech-tag">D3.js</span>
               </div>
             </div>
           </div>
@@ -403,7 +398,7 @@
                 Filo takibi, rota optimizasyonu ve teslimat yönetimi için kapsamlı lojistik platformu.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Vue.js</span><span class="tech-tag">Go</span><span class="tech-tag">MongoDB</span
+                <span class="tech-tag">Java</span><span class="tech-tag">Spring</span><span class="tech-tag">MongoDB</span
                 ><span class="tech-tag">Docker</span>
               </div>
             </div>
@@ -424,8 +419,8 @@
                 Online eğitim platformu. Video dersler, canlı sınıflar ve interaktif sınav modülleri.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Next.js</span><span class="tech-tag">WebRTC</span
-                ><span class="tech-tag">Redis</span>
+                <span class="tech-tag">.NET</span><span class="tech-tag">Angular</span
+                ><span class="tech-tag">SignalR</span>
               </div>
             </div>
           </div>
@@ -445,8 +440,8 @@
                 Akıllı cihazların uzaktan izlenmesi ve yönetimi için IoT dashboard uygulaması.
               </p>
               <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">React</span><span class="tech-tag">MQTT</span
-                ><span class="tech-tag">AWS IoT</span><span class="tech-tag">Grafana</span>
+                <span class="tech-tag">Angular</span><span class="tech-tag">Java</span
+                ><span class="tech-tag">MQTT</span><span class="tech-tag">AWS IoT</span>
               </div>
             </div>
           </div>
