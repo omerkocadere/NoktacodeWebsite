@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   lucide.createIcons();
 
   // Initialize all modules
+  initThemeSystem();
   initLanguageSystem();
   initNavbar();
   initMobileMenu();
@@ -16,6 +17,56 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mark page as loaded
   document.body.classList.add("page-loaded");
 });
+
+// ========================================
+// THEME SYSTEM (Dark/Light)
+// ========================================
+let currentTheme = localStorage.getItem("noktacode-theme") || "dark";
+
+function initThemeSystem() {
+  applyTheme(currentTheme);
+
+  // Desktop toggle
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+
+  // Mobile toggle
+  const themeToggleMobile = document.getElementById("themeToggleMobile");
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener("click", toggleTheme);
+  }
+}
+
+function toggleTheme() {
+  currentTheme = currentTheme === "dark" ? "light" : "dark";
+  localStorage.setItem("noktacode-theme", currentTheme);
+  applyTheme(currentTheme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+
+  // Update Tailwind dynamic classes for text colors used inline
+  const body = document.body;
+  if (theme === "light") {
+    body.classList.remove("text-white");
+    body.classList.add("text-slate-900");
+    // Update nav links & hamburger color
+    document.querySelectorAll("#menuToggle span").forEach((s) => {
+      s.classList.remove("bg-white");
+      s.classList.add("bg-slate-800");
+    });
+  } else {
+    body.classList.remove("text-slate-900");
+    body.classList.add("text-white");
+    document.querySelectorAll("#menuToggle span").forEach((s) => {
+      s.classList.remove("bg-slate-800");
+      s.classList.add("bg-white");
+    });
+  }
+}
 
 // ========================================
 // LANGUAGE SYSTEM

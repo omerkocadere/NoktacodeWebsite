@@ -36,8 +36,16 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('noktacode-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
-<body class="font-inter bg-dark-400 text-white antialiased">
+<body class="font-inter antialiased" style="background-color: var(--bg-primary); color: var(--text-primary);">
 
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent">
@@ -66,6 +74,12 @@
             <i data-lucide="globe" class="w-3.5 h-3.5"></i>
             <span data-i18n="langToggle">EN</span>
           </button>
+
+          <!-- Theme Toggle -->
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <i data-lucide="sun" class="w-4 h-4 icon-sun"></i>
+            <i data-lucide="moon" class="w-4 h-4 icon-moon"></i>
+          </button>
         </div>
 
         <!-- Mobile Hamburger -->
@@ -88,6 +102,10 @@
         <button id="langToggleMobile" class="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors py-2">
           <i data-lucide="globe" class="w-4 h-4"></i>
           <span data-i18n="langToggle">EN</span>
+        </button>
+        <button id="themeToggleMobile" class="theme-toggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="w-4 h-4 icon-sun"></i>
+          <i data-lucide="moon" class="w-4 h-4 icon-moon"></i>
         </button>
       </div>
     </div>
