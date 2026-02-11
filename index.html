@@ -51,6 +51,9 @@
     </script>
   </head>
   <body class="font-inter antialiased">
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="scroll-progress"></div>
+
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -256,6 +259,93 @@
       </div>
     </section>
 
+    <!-- ========== TECHNOLOGIES SECTION ========== -->
+    <section id="technologies" class="py-24 relative overflow-hidden">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="techTitle">Teknolojilerimiz</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="techSubtitle">
+            Modern stack'ler ile yüksek performanslı çözümler üretiyoruz.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+          <!-- .NET -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="box" class="w-12 h-12 mx-auto text-accent-light"></i>
+            </div>
+            <h4 class="font-semibold mb-1">.NET</h4>
+            <p class="text-xs" style="color: var(--text-muted)">Backend & API</p>
+          </div>
+
+          <!-- Angular -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="layout" class="w-12 h-12 mx-auto text-red-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">Angular</h4>
+            <p class="text-xs" style="color: var(--text-muted)">Frontend</p>
+          </div>
+
+          <!-- Java -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="coffee" class="w-12 h-12 mx-auto text-orange-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">Java</h4>
+            <p class="text-xs" style="color: var(--text-muted)">Enterprise</p>
+          </div>
+
+          <!-- Python -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="code-2" class="w-12 h-12 mx-auto text-blue-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">Python</h4>
+            <p class="text-xs" style="color: var(--text-muted)">AI & Data</p>
+          </div>
+
+          <!-- React -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="atom" class="w-12 h-12 mx-auto text-cyan-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">React</h4>
+            <p class="text-xs" style="color: var(--text-muted)">UI Framework</p>
+          </div>
+
+          <!-- Node.js -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="server" class="w-12 h-12 mx-auto text-green-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">Node.js</h4>
+            <p class="text-xs" style="color: var(--text-muted)">Runtime</p>
+          </div>
+
+          <!-- AWS -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="cloud" class="w-12 h-12 mx-auto text-amber-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">AWS</h4>
+            <p class="text-xs" style="color: var(--text-muted)">Cloud</p>
+          </div>
+
+          <!-- Docker -->
+          <div class="tech-card glass-card rounded-2xl p-6 text-center group">
+            <div class="tech-logo mb-3">
+              <i data-lucide="package" class="w-12 h-12 mx-auto text-indigo-400"></i>
+            </div>
+            <h4 class="font-semibold mb-1">Docker</h4>
+            <p class="text-xs" style="color: var(--text-muted)">DevOps</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== ABOUT SECTION ========== -->
     <section id="about" class="py-24 relative">
       <div class="section-divider mb-24"></div>
@@ -297,6 +387,69 @@
               <div class="text-4xl font-extrabold text-accent-light stat-number" data-count="30">0</div>
               <div class="text-sm mt-2" style="color: var(--text-secondary)" data-i18n="statTech">Teknoloji</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROCESS SECTION ========== -->
+    <section id="process" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="processTitle">Çalışma Sürecimiz</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="processSubtitle">
+            Agile metodoloji ile hızlı ve kaliteli teslimat.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+          <!-- Step 1 -->
+          <div class="process-step glass-card rounded-2xl p-6 relative">
+            <div class="step-number">01</div>
+            <div class="step-icon mb-4">
+              <i data-lucide="search" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-semibold mb-2" data-i18n="processStep1Title">Analiz</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="processStep1Desc">
+              İhtiyaçlarınızı detaylı analiz ediyor, gerekliliklerinizi belirliyoruz.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-step glass-card rounded-2xl p-6 relative">
+            <div class="step-number">02</div>
+            <div class="step-icon mb-4">
+              <i data-lucide="pen-tool" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-semibold mb-2" data-i18n="processStep2Title">Tasarım</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="processStep2Desc">
+              Kullanıcı deneyimi odaklı prototip ve tasarım oluşturuyoruz.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-step glass-card rounded-2xl p-6 relative">
+            <div class="step-number">03</div>
+            <div class="step-icon mb-4">
+              <i data-lucide="code" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-semibold mb-2" data-i18n="processStep3Title">Geliştirme</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="processStep3Desc">
+              Sprint'ler halinde yazılımı geliştiriyor, düzenli geri bildirim alıyoruz.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-step glass-card rounded-2xl p-6 relative">
+            <div class="step-number">04</div>
+            <div class="step-icon mb-4">
+              <i data-lucide="rocket" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-semibold mb-2" data-i18n="processStep4Title">Teslimat</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="processStep4Desc">
+              Test, deployment ve devreye alma süreçlerini titizlikle yönetiyoruz.
+            </p>
           </div>
         </div>
       </div>
@@ -436,6 +589,84 @@
               <div class="flex flex-wrap gap-2">
                 <span class="tech-tag">Angular</span><span class="tech-tag">Java</span><span class="tech-tag">MQTT</span
                 ><span class="tech-tag">AWS IoT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section id="testimonials" class="py-24 relative">
+      <div class="section-divider mb-24"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="testimonialsTitle">Müşterilerimiz Ne Diyor?</h2>
+          <p class="max-w-2xl mx-auto text-lg" style="color: var(--text-secondary)" data-i18n="testimonialsSubtitle">
+            Birlikte çalıştığımız firmaların görüşleri.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card glass-card rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial1Text">
+              "Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik uzmanlıkları sayesinde hedeflerimize ulaştık."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">M</div>
+              <div>
+                <div class="font-semibold text-sm" data-i18n="testimonial1Name">Mehmet Yılmaz</div>
+                <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial1Title">CEO, TechStore</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card glass-card rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial2Text">
+              "Kurumsal yazılım projemiz için Noktacode'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı teslimat yaptılar."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">A</div>
+              <div>
+                <div class="font-semibold text-sm" data-i18n="testimonial2Name">Ayşe Kaya</div>
+                <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial2Title">CTO, LogiFlow</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card glass-card rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)" data-i18n="testimonial3Text">
+              "Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde ettik."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-violet/20 flex items-center justify-center text-accent-light font-semibold">C</div>
+              <div>
+                <div class="font-semibold text-sm" data-i18n="testimonial3Name">Can Demir</div>
+                <div class="text-xs" style="color: var(--text-muted)" data-i18n="testimonial3Title">Kurucu, HealthTrack</div>
               </div>
             </div>
           </div>

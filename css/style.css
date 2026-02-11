@@ -95,6 +95,19 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
 /* --------------------------------
    Typography
    -------------------------------- */
@@ -325,6 +338,67 @@ body {
 
 /* Stats */
 .stat-number { font-variant-numeric: tabular-nums; }
+
+/* Tech Cards */
+.tech-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.tech-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+}
+
+.tech-logo {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-card:hover .tech-logo {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Process Steps */
+.process-step {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  opacity: 0.08;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.step-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: var(--accent-light);
+}
+
+.process-step:hover { transform: translateY(-4px); }
+.process-step:hover .step-icon { transform: scale(1.1); }
+
+/* Testimonials */
+.testimonial-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.12);
+}
 
 /* --------------------------------
    Buttons

@@ -64,6 +64,35 @@ const translations = {
     project6Title: "IoT Kontrol Paneli",
     project6Desc: "Akıllı cihazların uzaktan izlenmesi ve yönetimi için IoT dashboard uygulaması.",
 
+    // Technologies
+    techTitle: "Teknolojilerimiz",
+    techSubtitle: "Modern stack'ler ile yüksek performanslı çözümler üretiyoruz.",
+
+    // Process
+    processTitle: "Çalışma Sürecimiz",
+    processSubtitle: "Agile metodoloji ile hızlı ve kaliteli teslimat.",
+    processStep1Title: "Analiz",
+    processStep1Desc: "İhtiyaçlarınızı detaylı analiz ediyor, gerekliliklerinizi belirliyoruz.",
+    processStep2Title: "Tasarım",
+    processStep2Desc: "Kullanıcı deneyimi odaklı prototip ve tasarım oluşturuyoruz.",
+    processStep3Title: "Geliştirme",
+    processStep3Desc: "Sprint'ler halinde yazılımı geliştiriyor, düzenli geri bildirim alıyoruz.",
+    processStep4Title: "Teslimat",
+    processStep4Desc: "Test, deployment ve devreye alma süreçlerini titizlikle yönetiyoruz.",
+
+    // Testimonials
+    testimonialsTitle: "Müşterilerimiz Ne Diyor?",
+    testimonialsSubtitle: "Birlikte çalıştığımız firmaların görüşleri.",
+    testimonial1Text: "\"Noktacode ekibi e-ticaret platformumuzu baştan sona geliştirdi. Profesyonel yaklaşım ve teknik uzmanlıkları sayesinde hedeflerimize ulaştık.\"",
+    testimonial1Name: "Mehmet Yılmaz",
+    testimonial1Title: "CEO, TechStore",
+    testimonial2Text: "\"Kurumsal yazılım projemiz için Noktacode'u tercih ettik. Agile süreçlerle çalışarak esnek ve hızlı teslimat yaptılar.\"",
+    testimonial2Name: "Ayşe Kaya",
+    testimonial2Title: "CTO, LogiFlow",
+    testimonial3Text: "\"Mobil uygulama projemizde harika bir iş çıkardılar. Hem iOS hem de Android için native performans elde ettik.\"",
+    testimonial3Name: "Can Demir",
+    testimonial3Title: "Kurucu, HealthTrack",
+
     // Contact
     contactTitle: "İletişim",
     contactSubtitle: "Projenizi konuşalım. Size en kısa sürede dönüş yapacağız.",
@@ -151,6 +180,35 @@ const translations = {
     project5Desc: "Online education platform with video courses, live classes and interactive exam modules.",
     project6Title: "IoT Control Panel",
     project6Desc: "IoT dashboard application for remote monitoring and management of smart devices.",
+
+    // Technologies
+    techTitle: "Our Technologies",
+    techSubtitle: "Building high-performance solutions with modern stacks.",
+
+    // Process
+    processTitle: "Our Process",
+    processSubtitle: "Fast and quality delivery with Agile methodology.",
+    processStep1Title: "Analysis",
+    processStep1Desc: "We analyze your needs in detail and define your requirements.",
+    processStep2Title: "Design",
+    processStep2Desc: "We create user experience focused prototypes and designs.",
+    processStep3Title: "Development",
+    processStep3Desc: "We develop software in sprints and get regular feedback.",
+    processStep4Title: "Delivery",
+    processStep4Desc: "We meticulously manage testing, deployment and go-live processes.",
+
+    // Testimonials
+    testimonialsTitle: "What Our Clients Say?",
+    testimonialsSubtitle: "Feedback from companies we've worked with.",
+    testimonial1Text: "\"The Noktacode team developed our e-commerce platform from scratch. We reached our goals thanks to their professional approach and technical expertise.\"",
+    testimonial1Name: "Mehmet Yılmaz",
+    testimonial1Title: "CEO, TechStore",
+    testimonial2Text: "\"We chose Noktacode for our enterprise software project. They delivered flexibly and quickly by working with Agile processes.\"",
+    testimonial2Name: "Ayşe Kaya",
+    testimonial2Title: "CTO, LogiFlow",
+    testimonial3Text: "\"They did a great job on our mobile app project. We achieved native performance for both iOS and Android.\"",
+    testimonial3Name: "Can Demir",
+    testimonial3Title: "Founder, HealthTrack",
 
     // Contact
     contactTitle: "Contact",

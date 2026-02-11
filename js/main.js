@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCounterAnimation();
   initContactForm();
   initParticles();
+  initScrollProgress();
 
   // Mark page as loaded
   document.body.classList.add("page-loaded");
@@ -354,4 +355,20 @@ function initParticles() {
 
     container.appendChild(particle);
   }
+}
+
+// ========================================
+// SCROLL PROGRESS INDICATOR
+// ========================================
+function initScrollProgress() {
+  const progressBar = document.getElementById("scrollProgress");
+  if (!progressBar) return;
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    progressBar.style.width = scrollPercent + "%";
+  });
 }
