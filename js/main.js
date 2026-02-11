@@ -47,25 +47,7 @@ function toggleTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
-
-  // Update Tailwind dynamic classes for text colors used inline
-  const body = document.body;
-  if (theme === "light") {
-    body.classList.remove("text-white");
-    body.classList.add("text-slate-900");
-    // Update nav links & hamburger color
-    document.querySelectorAll("#menuToggle span").forEach((s) => {
-      s.classList.remove("bg-white");
-      s.classList.add("bg-slate-800");
-    });
-  } else {
-    body.classList.remove("text-slate-900");
-    body.classList.add("text-white");
-    document.querySelectorAll("#menuToggle span").forEach((s) => {
-      s.classList.remove("bg-slate-800");
-      s.classList.add("bg-white");
-    });
-  }
+  // All color switching is handled via CSS custom properties — no class toggling needed.
 }
 
 // ========================================
@@ -283,6 +265,12 @@ function initContactForm() {
 
   if (!form) return;
 
+  // Set the _next redirect to the current page
+  const nextInput = document.getElementById("formNext");
+  if (nextInput) {
+    nextInput.value = window.location.href;
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -293,21 +281,45 @@ function initContactForm() {
     submitBtn.disabled = true;
     submitBtn.querySelector("span").textContent = translations[currentLang].contactSending;
 
-    // Simulate sending
-    setTimeout(() => {
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.querySelector("span").textContent = originalText;
+    // Submit via fetch to FormSubmit.co
+    const formData = new FormData(form);
 
-      // Show success message
-      successMsg.classList.remove("hidden");
-      successMsg.textContent = translations[currentLang].contactSuccess;
-
-      // Hide after 5s
-      setTimeout(() => {
-        successMsg.classList.add("hidden");
-      }, 5000);
-    }, 1500);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          form.reset();
+          successMsg.classList.remove("hidden");
+          successMsg.textContent = translations[currentLang].contactSuccess;
+        } else {
+          successMsg.classList.remove("hidden");
+          successMsg.textContent = translations[currentLang].contactError || "Bir hata oluştu. Lütfen tekrar deneyin.";
+          successMsg.style.borderColor = "rgba(239,68,68,0.2)";
+          successMsg.style.background = "rgba(239,68,68,0.1)";
+          successMsg.style.color = "#f87171";
+        }
+      })
+      .catch(() => {
+        successMsg.classList.remove("hidden");
+        successMsg.textContent = translations[currentLang].contactError || "Bir hata oluştu. Lütfen tekrar deneyin.";
+        successMsg.style.borderColor = "rgba(239,68,68,0.2)";
+        successMsg.style.background = "rgba(239,68,68,0.1)";
+        successMsg.style.color = "#f87171";
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.querySelector("span").textContent = originalText;
+        setTimeout(() => {
+          successMsg.classList.add("hidden");
+          // Reset success styles
+          successMsg.style.borderColor = "";
+          successMsg.style.background = "";
+          successMsg.style.color = "";
+        }, 5000);
+      });
   });
 }
 
