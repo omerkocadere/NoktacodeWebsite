@@ -79,7 +79,7 @@ const translations = {
     contactPhoneLabel: "Telefon",
     contactAddressLabel: "Adres",
     contactEmailValue: "okocadere@gmail.com",
-    contactPhoneValue: "+90 (555) 123 45 67",
+    contactPhoneValue: "+90 (552) 340 97 95",
     contactAddressValue: "İstanbul, Türkiye",
 
     // Footer
