@@ -1,0 +1,161 @@
+const translations = {
+  tr: {
+    // Navbar
+    navServices: "Hizmetler",
+    navAbout: "Hakkımızda",
+    navProjects: "Projeler",
+    navContact: "İletişim",
+    langToggle: "EN",
+
+    // Hero
+    heroTitle: "Dijital Dünyada <span class='text-gradient'>Fark Yaratıyoruz</span>",
+    heroSubtitle: "Modern teknolojiler ile işletmenizi geleceğe taşıyoruz. Yazılım çözümlerimizle dijital dönüşümünüzü hızlandırıyoruz.",
+    heroCta: "İletişime Geç",
+    heroSecondary: "Projelerimizi İncele",
+
+    // Services
+    servicesTitle: "Hizmetlerimiz",
+    servicesSubtitle: "İşletmenizin ihtiyaçlarına özel, son teknoloji çözümler sunuyoruz.",
+    serviceWebTitle: "Web Geliştirme",
+    serviceWebDesc: "Modern ve performanslı web uygulamaları geliştiriyoruz. React, Next.js, Vue.js ve daha fazlası ile projelerinizi hayata geçiriyoruz.",
+    serviceMobileTitle: "Mobil Uygulama",
+    serviceMobileDesc: "iOS ve Android platformları için native ve cross-platform mobil uygulamalar geliştiriyoruz.",
+    serviceUiTitle: "UI/UX Tasarım",
+    serviceUiDesc: "Kullanıcı deneyimini ön plana çıkaran, modern ve estetik arayüz tasarımları oluşturuyoruz.",
+    serviceCloudTitle: "Bulut Çözümleri",
+    serviceCloudDesc: "AWS, Azure ve Google Cloud altyapıları ile ölçeklenebilir ve güvenilir bulut çözümleri sunuyoruz.",
+    serviceApiTitle: "API Entegrasyonu",
+    serviceApiDesc: "Sistemlerinizi birbirine bağlayan güçlü API çözümleri ve üçüncü parti entegrasyonlar geliştiriyoruz.",
+    serviceConsultTitle: "Yazılım Danışmanlığı",
+    serviceConsultDesc: "Teknoloji seçimi, mimari tasarım ve dijital dönüşüm süreçlerinizde uzman danışmanlık hizmeti veriyoruz.",
+
+    // About
+    aboutTitle: "Hakkımızda",
+    aboutSubtitle: "Tutkuyla kod yazıyoruz, mükemmellikle teslim ediyoruz.",
+    aboutText1: "Noktacode olarak, yazılım dünyasında yenilikçi çözümler üretmeye odaklanmış bir teknoloji firmasıyız. Müşterilerimizin dijital dönüşüm yolculuğunda güvenilir bir iş ortağı olmayı hedefliyoruz.",
+    aboutText2: "Deneyimli ekibimiz ile en son teknolojileri kullanarak, işletmelerin ihtiyaçlarına özel yazılım çözümleri geliştiriyoruz. Her projede kalite, performans ve kullanıcı deneyimini ön planda tutuyoruz.",
+    statProjects: "Tamamlanan Proje",
+    statClients: "Mutlu Müşteri",
+    statExperience: "Yıl Tecrübe",
+    statTech: "Teknoloji",
+
+    // Projects
+    projectsTitle: "Projelerimiz",
+    projectsSubtitle: "Geliştirdiğimiz bazı projeler ve kullandığımız teknolojiler.",
+    project1Title: "E-Ticaret Platformu",
+    project1Desc: "Yüksek trafikli, ölçeklenebilir e-ticaret çözümü. Gerçek zamanlı stok yönetimi ve ödeme entegrasyonları.",
+    project2Title: "Sağlık Takip Uygulaması",
+    project2Desc: "Hastaların sağlık verilerini takip eden mobil uygulama. Doktor-hasta iletişim modülü dahil.",
+    project3Title: "Fintech Dashboard",
+    project3Desc: "Finansal verilerin gerçek zamanlı görselleştirildiği analitik dashboard. Gelişmiş grafik ve raporlama.",
+    project4Title: "Lojistik Yönetim Sistemi",
+    project4Desc: "Filo takibi, rota optimizasyonu ve teslimat yönetimi için kapsamlı lojistik platformu.",
+    project5Title: "Eğitim Portalı",
+    project5Desc: "Online eğitim platformu. Video dersler, canlı sınıflar ve interaktif sınav modülleri.",
+    project6Title: "IoT Kontrol Paneli",
+    project6Desc: "Akıllı cihazların uzaktan izlenmesi ve yönetimi için IoT dashboard uygulaması.",
+
+    // Contact
+    contactTitle: "İletişim",
+    contactSubtitle: "Projenizi konuşalım. Size en kısa sürede dönüş yapacağız.",
+    contactName: "Adınız Soyadınız",
+    contactEmail: "E-posta Adresiniz",
+    contactMessage: "Mesajınız",
+    contactSend: "Mesaj Gönder",
+    contactSending: "Gönderiliyor...",
+    contactSuccess: "Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.",
+    contactInfoTitle: "İletişim Bilgileri",
+    contactEmailLabel: "E-posta",
+    contactPhoneLabel: "Telefon",
+    contactAddressLabel: "Adres",
+    contactEmailValue: "info@noktacode.com",
+    contactPhoneValue: "+90 (555) 123 45 67",
+    contactAddressValue: "İstanbul, Türkiye",
+
+    // Footer
+    footerDesc: "Modern teknolojiler ile dijital dönüşümünüzü hızlandırıyoruz.",
+    footerQuickLinks: "Hızlı Linkler",
+    footerContact: "İletişim",
+    footerRights: "© 2026 Noktacode. Tüm hakları saklıdır.",
+  },
+
+  en: {
+    // Navbar
+    navServices: "Services",
+    navAbout: "About",
+    navProjects: "Projects",
+    navContact: "Contact",
+    langToggle: "TR",
+
+    // Hero
+    heroTitle: "Making a <span class='text-gradient'>Difference</span> in the Digital World",
+    heroSubtitle: "We elevate your business with modern technologies. Accelerate your digital transformation with our software solutions.",
+    heroCta: "Get in Touch",
+    heroSecondary: "View Projects",
+
+    // Services
+    servicesTitle: "Our Services",
+    servicesSubtitle: "We offer cutting-edge solutions tailored to your business needs.",
+    serviceWebTitle: "Web Development",
+    serviceWebDesc: "We build modern, high-performance web applications using React, Next.js, Vue.js and more to bring your projects to life.",
+    serviceMobileTitle: "Mobile Apps",
+    serviceMobileDesc: "We develop native and cross-platform mobile applications for iOS and Android platforms.",
+    serviceUiTitle: "UI/UX Design",
+    serviceUiDesc: "We create modern and aesthetic interface designs that prioritize user experience.",
+    serviceCloudTitle: "Cloud Solutions",
+    serviceCloudDesc: "We provide scalable and reliable cloud solutions with AWS, Azure and Google Cloud infrastructures.",
+    serviceApiTitle: "API Integration",
+    serviceApiDesc: "We develop powerful API solutions and third-party integrations that connect your systems.",
+    serviceConsultTitle: "Software Consulting",
+    serviceConsultDesc: "We provide expert consulting services for technology selection, architectural design and digital transformation.",
+
+    // About
+    aboutTitle: "About Us",
+    aboutSubtitle: "We code with passion, deliver with excellence.",
+    aboutText1: "At Noktacode, we are a technology company focused on creating innovative solutions in the software world. We aim to be a trusted partner in our clients' digital transformation journey.",
+    aboutText2: "With our experienced team, we develop custom software solutions using the latest technologies. We prioritize quality, performance and user experience in every project.",
+    statProjects: "Projects Done",
+    statClients: "Happy Clients",
+    statExperience: "Years Experience",
+    statTech: "Technologies",
+
+    // Projects
+    projectsTitle: "Our Projects",
+    projectsSubtitle: "Some of our projects and the technologies we use.",
+    project1Title: "E-Commerce Platform",
+    project1Desc: "High-traffic, scalable e-commerce solution with real-time inventory management and payment integrations.",
+    project2Title: "Health Tracking App",
+    project2Desc: "Mobile app tracking patients' health data with doctor-patient communication module included.",
+    project3Title: "Fintech Dashboard",
+    project3Desc: "Analytics dashboard with real-time financial data visualization. Advanced charts and reporting.",
+    project4Title: "Logistics Management",
+    project4Desc: "Comprehensive logistics platform for fleet tracking, route optimization and delivery management.",
+    project5Title: "Education Portal",
+    project5Desc: "Online education platform with video courses, live classes and interactive exam modules.",
+    project6Title: "IoT Control Panel",
+    project6Desc: "IoT dashboard application for remote monitoring and management of smart devices.",
+
+    // Contact
+    contactTitle: "Contact",
+    contactSubtitle: "Let's discuss your project. We'll get back to you as soon as possible.",
+    contactName: "Your Full Name",
+    contactEmail: "Your Email Address",
+    contactMessage: "Your Message",
+    contactSend: "Send Message",
+    contactSending: "Sending...",
+    contactSuccess: "Your message has been sent successfully! We'll get back to you shortly.",
+    contactInfoTitle: "Contact Information",
+    contactEmailLabel: "Email",
+    contactPhoneLabel: "Phone",
+    contactAddressLabel: "Address",
+    contactEmailValue: "info@noktacode.com",
+    contactPhoneValue: "+90 (555) 123 45 67",
+    contactAddressValue: "Istanbul, Turkey",
+
+    // Footer
+    footerDesc: "Accelerating your digital transformation with modern technologies.",
+    footerQuickLinks: "Quick Links",
+    footerContact: "Contact",
+    footerRights: "© 2026 Noktacode. All rights reserved.",
+  },
+};
