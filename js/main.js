@@ -15,10 +15,33 @@ document.addEventListener("DOMContentLoaded", () => {
   initParticles();
   initScrollProgress();
   initTypewriter();
+  initMagneticElements();
 
   // Mark page as loaded
   document.body.classList.add("page-loaded");
 });
+
+// ========================================
+// MAGNETIC ELEMENTS (AI INTERACTIVITY)
+// ========================================
+function initMagneticElements() {
+  const elements = document.querySelectorAll(".btn-glow, .social-icon, .logo-container");
+
+  elements.forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = (clientX - (left + width / 2)) * 0.3;
+      const y = (clientY - (top + height / 2)) * 0.3;
+
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = `translate(0px, 0px)`;
+    });
+  });
+}
 
 // ========================================
 // TYPEWRITER EFFECT
@@ -411,121 +434,160 @@ function hexToRgba(hex, alpha) {
 
 function initParticles() {
   const canvas = document.getElementById("neuralCanvas");
-  if (!canvas) return;
+  if (!canvas || !globalThis.THREE) return;
 
-  const ctx = canvas.getContext("2d");
-  let particles = [];
-  const mouse = { x: null, y: null, radius: 150 };
+  // Scene setup
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, globalThis.innerWidth / globalThis.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true,
+    antialias: true,
+  });
 
-  // Adjust canvas size to window
-  function resizeCanvas() {
-    canvas.width = globalThis.innerWidth;
-    canvas.height = globalThis.innerHeight;
-    initParticlesArray();
+  renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
+  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio, 2));
+
+  // Particles config
+  const particlesCount = 150;
+  const positions = new Float32Array(particlesCount * 3);
+  const velocities = [];
+  const particleGeometry = new THREE.BufferGeometry();
+
+  // Helper for accent color
+  function getAccentColor() {
+    const hex = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+    return new THREE.Color(hex || "#6366f1");
   }
 
-  // Particle Class
-  class Particle {
-    constructor() {
-      this.reset();
-    }
+  // Initializing particles
+  for (let i = 0; i < particlesCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
 
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 0.5;
-      this.speedX = Math.random() * 0.8 - 0.4;
-      this.speedY = Math.random() * 0.8 - 0.4;
-      this.color = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // Bounce off edges
-      if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-      if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-
-      // Interactivity
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.hypot(dx, dy);
-        if (distance < mouse.radius) {
-          const force = (mouse.radius - distance) / mouse.radius;
-          this.x -= dx * force * 0.02;
-          this.y -= dy * force * 0.02;
-        }
-      }
-    }
-
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    }
-  }
-
-  function initParticlesArray() {
-    particles = [];
-    const count = Math.floor((canvas.width * canvas.height) / 10000);
-    for (let i = 0; i < Math.min(count, 120); i++) {
-      particles.push(new Particle());
-    }
-  }
-
-  function connectParticles() {
-    const accentColor = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
-
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a; b < particles.length; b++) {
-        const dx = particles[a].x - particles[b].x;
-        const dy = particles[a].y - particles[b].y;
-        const distance = Math.hypot(dx, dy);
-
-        if (distance < 150) {
-          const opacity = 1 - distance / 150;
-          ctx.strokeStyle = accentColor.startsWith("#")
-            ? hexToRgba(accentColor, opacity * 0.2)
-            : `rgba(99, 102, 241, ${opacity * 0.2})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach((p) => {
-      p.update();
-      p.draw();
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.01,
+      y: (Math.random() - 0.5) * 0.01,
+      z: (Math.random() - 0.5) * 0.01,
     });
-
-    connectParticles();
-    requestAnimationFrame(animate);
   }
 
-  // Event Listeners
+  particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+  // Circular texture for points
+  const circleCanvas = document.createElement("canvas");
+  circleCanvas.width = 64;
+  circleCanvas.height = 64;
+  const circleCtx = circleCanvas.getContext("2d");
+  circleCtx.beginPath();
+  circleCtx.arc(32, 32, 30, 0, Math.PI * 2);
+  circleCtx.fillStyle = "#ffffff";
+  circleCtx.fill();
+  const particleTexture = new THREE.CanvasTexture(circleCanvas);
+
+  const particleMaterial = new THREE.PointsMaterial({
+    size: 0.1,
+    color: getAccentColor(),
+    transparent: true,
+    opacity: 0.8,
+    map: particleTexture,
+    alphaTest: 0.05,
+  });
+
+  const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+  scene.add(particleSystem);
+
+  // Lines for connections
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: getAccentColor(),
+    transparent: true,
+    opacity: 0.4, // Increased from 0.15
+  });
+
+  const lineGeometry = new THREE.BufferGeometry();
+  let lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+  scene.add(lineMesh);
+
+  camera.position.z = 5;
+
+  // Mouse interactivity
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
   globalThis.addEventListener("mousemove", (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+    mouseX = (e.clientX - globalThis.innerWidth / 2) / 100;
+    mouseY = (e.clientY - globalThis.innerHeight / 2) / 100;
   });
 
-  globalThis.addEventListener("mouseout", () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
+  // Handle Resizing & Theme Change
+  function onResize() {
+    camera.aspect = globalThis.innerWidth / globalThis.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
 
-  globalThis.addEventListener("resize", resizeCanvas);
+    // Update material colors for theme change
+    const newColor = getAccentColor();
+    particleMaterial.color = newColor;
+    lineMaterial.color = newColor;
+  }
 
-  resizeCanvas();
+  globalThis.addEventListener("resize", onResize);
+
+  // Animation Loop
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Smooth mouse follow
+    targetX += (mouseX - targetX) * 0.05;
+    targetY += (mouseY - targetY) * 0.05;
+    scene.rotation.y = targetX * 0.5;
+    scene.rotation.x = targetY * 0.5;
+
+    // Movement animation
+    const posAttr = particleGeometry.attributes.position;
+    const linePositions = [];
+
+    for (let i = 0; i < particlesCount; i++) {
+      posAttr.array[i * 3] += velocities[i].x;
+      posAttr.array[i * 3 + 1] += velocities[i].y;
+      posAttr.array[i * 3 + 2] += velocities[i].z;
+
+      // Wrap around bounds
+      if (Math.abs(posAttr.array[i * 3]) > 5) velocities[i].x *= -1;
+      if (Math.abs(posAttr.array[i * 3 + 1]) > 5) velocities[i].y *= -1;
+      if (Math.abs(posAttr.array[i * 3 + 2]) > 5) velocities[i].z *= -1;
+    }
+    posAttr.needsUpdate = true;
+
+    // Build connections
+    for (let i = 0; i < particlesCount; i++) {
+      for (let j = i + 1; j < particlesCount; j++) {
+        const dx = posAttr.array[i * 3] - posAttr.array[j * 3];
+        const dy = posAttr.array[i * 3 + 1] - posAttr.array[j * 3 + 1];
+        const dz = posAttr.array[i * 3 + 2] - posAttr.array[j * 3 + 2];
+        const distSq = dx * dx + dy * dy + dz * dz;
+
+        if (distSq < 2.5) {
+          linePositions.push(
+            posAttr.array[i * 3],
+            posAttr.array[i * 3 + 1],
+            posAttr.array[i * 3 + 2],
+            posAttr.array[j * 3],
+            posAttr.array[j * 3 + 1],
+            posAttr.array[j * 3 + 2],
+          );
+        }
+      }
+    }
+
+    lineGeometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+
+    renderer.render(scene, camera);
+  }
+
   animate();
 }
 
