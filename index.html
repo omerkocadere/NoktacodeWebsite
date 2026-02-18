@@ -272,13 +272,14 @@
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="hero-bg"></div>
       <div class="grid-pattern"></div>
-      <div id="particles" class="absolute inset-0 z-[1] pointer-events-none"></div>
+      <div class="scanning-line"></div>
+      <canvas id="neuralCanvas" class="absolute inset-0 z-[1] pointer-events-none opacity-40 dark:opacity-60 transition-opacity duration-1000"></canvas>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-8 text-center pt-20">
         <!-- Badge -->
         <div class="reveal hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-8">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          <span data-i18n="heroBadge">Yazılım Çözüm Ortağınız</span>
+          <span class="typewriter" data-i18n="heroBadge">Yazılım Çözüm Ortağınız</span>
         </div>
 
         <!-- Title -->
@@ -353,7 +354,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card reveal-scale rounded-2xl p-6">
             <div class="service-icon mb-4"><i data-lucide="monitor" class="w-6 h-6"></i></div>
             <h3 class="text-lg font-semibold mb-2" data-i18n="serviceWebTitle">Web Geliştirme</h3>
             <p class="text-sm leading-relaxed" style="color: var(--text-secondary)" data-i18n="serviceWebDesc">

@@ -14,10 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initParticles();
   initScrollProgress();
+  initTypewriter();
 
   // Mark page as loaded
   document.body.classList.add("page-loaded");
 });
+
+// ========================================
+// TYPEWRITER EFFECT
+// ========================================
+function initTypewriter() {
+  const elements = document.querySelectorAll(".typewriter");
+  elements.forEach((el) => {
+    const text = el.dataset.text || el.textContent;
+    el.textContent = "";
+    let i = 0;
+    const speed = 50;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    // Delay start based on scroll reveal or just a fixed delay
+    setTimeout(type, 800);
+  });
+}
 
 // ========================================
 // THEME SYSTEM (Dark/Light)
@@ -48,7 +72,9 @@ function toggleTheme() {
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  // All color switching is handled via CSS custom properties — no class toggling needed.
+  // All color switching is handled via CSS custom properties
+  // Force canvas resize/reinit to pick up theme colors
+  globalThis.dispatchEvent(new Event("resize"));
 }
 
 // ========================================
@@ -86,31 +112,35 @@ function applyTranslations(lang) {
   // Update HTML lang attribute
   document.documentElement.lang = lang === "tr" ? "tr" : "en";
 
+  updateContentTranslations(t);
+  updateSeoMetaTags(t);
+  updateOgLocale(lang);
+}
+
+function updateContentTranslations(t) {
   // Text content translations
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.dataset.i18n;
-    if (t[key]) {
-      el.textContent = t[key];
+    if (t[el.dataset.i18n]) {
+      el.textContent = t[el.dataset.i18n];
     }
   });
 
   // HTML content translations (for spans inside text)
   document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-    const key = el.dataset.i18nHtml;
-    if (t[key]) {
-      el.innerHTML = t[key];
+    if (t[el.dataset.i18nHtml]) {
+      el.innerHTML = t[el.dataset.i18nHtml];
     }
   });
 
   // Placeholder translations
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.dataset.i18nPlaceholder;
-    if (t[key]) {
-      el.placeholder = t[key];
+    if (t[el.dataset.i18nPlaceholder]) {
+      el.placeholder = t[el.dataset.i18nPlaceholder];
     }
   });
+}
 
-  // SEO Meta Tags - Dynamic update when language changes
+function updateSeoMetaTags(t) {
   if (t.seoTitle) {
     document.getElementById("pageTitle").textContent = t.seoTitle;
     const metaTitle = document.getElementById("metaTitle");
@@ -125,19 +155,22 @@ function applyTranslations(lang) {
     if (metaKeywords) metaKeywords.content = t.seoKeywords;
   }
   if (t.seoOgTitle) {
-    const ogTitle = document.getElementById("ogTitle");
-    if (ogTitle) ogTitle.content = t.seoOgTitle;
-    const twitterTitle = document.getElementById("twitterTitle");
-    if (twitterTitle) twitterTitle.content = t.seoOgTitle;
+    const fields = ["ogTitle", "twitterTitle"];
+    fields.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.content = t.seoOgTitle;
+    });
   }
   if (t.seoOgDescription) {
-    const ogDescription = document.getElementById("ogDescription");
-    if (ogDescription) ogDescription.content = t.seoOgDescription;
-    const twitterDescription = document.getElementById("twitterDescription");
-    if (twitterDescription) twitterDescription.content = t.seoOgDescription;
+    const fields = ["ogDescription", "twitterDescription"];
+    fields.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.content = t.seoOgDescription;
+    });
   }
+}
 
-  // Update og:locale based on language
+function updateOgLocale(lang) {
   const ogLocale = document.getElementById("ogLocale");
   if (ogLocale) {
     ogLocale.content = lang === "tr" ? "tr_TR" : "en_US";
@@ -359,36 +392,139 @@ function initContactForm() {
 }
 
 // ========================================
-// FLOATING PARTICLES
+// AI-INSPIRED NEURAL NETWORK ANIMATION
 // ========================================
-function initParticles() {
-  const container = document.getElementById("particles");
-  if (!container) return;
 
-  const particleCount = 20;
-
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement("div");
-    particle.classList.add("particle");
-
-    const size = Math.random() * 3 + 1;
-    const left = Math.random() * 100;
-    const delay = Math.random() * 15;
-    const duration = Math.random() * 10 + 15;
-    const hue = Math.random() > 0.5 ? "139, 92, 246" : "99, 102, 241";
-
-    particle.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${left}%;
-      background: rgba(${hue}, 0.6);
-      box-shadow: 0 0 ${size * 3}px rgba(${hue}, 0.3);
-      animation-delay: ${delay}s;
-      animation-duration: ${duration}s;
-    `;
-
-    container.appendChild(particle);
+// Simplified hexToRgba helper
+function hexToRgba(hex, alpha) {
+  let r = 99;
+  let g = 102;
+  let b = 241;
+  if (hex.startsWith("#")) {
+    const bigint = Number.parseInt(hex.slice(1), 16);
+    r = (bigint >> 16) & 255;
+    g = (bigint >> 8) & 255;
+    b = bigint & 255;
   }
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function initParticles() {
+  const canvas = document.getElementById("neuralCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  const mouse = { x: null, y: null, radius: 150 };
+
+  // Adjust canvas size to window
+  function resizeCanvas() {
+    canvas.width = globalThis.innerWidth;
+    canvas.height = globalThis.innerHeight;
+    initParticlesArray();
+  }
+
+  // Particle Class
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = Math.random() * 0.8 - 0.4;
+      this.speedY = Math.random() * 0.8 - 0.4;
+      this.color = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Bounce off edges
+      if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+      if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+
+      // Interactivity
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < mouse.radius) {
+          const force = (mouse.radius - distance) / mouse.radius;
+          this.x -= dx * force * 0.02;
+          this.y -= dy * force * 0.02;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function initParticlesArray() {
+    particles = [];
+    const count = Math.floor((canvas.width * canvas.height) / 10000);
+    for (let i = 0; i < Math.min(count, 120); i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function connectParticles() {
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < 150) {
+          const opacity = 1 - distance / 150;
+          ctx.strokeStyle = accentColor.startsWith("#") ? hexToRgba(accentColor, opacity * 0.2) : `rgba(99, 102, 241, ${opacity * 0.2})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+
+    connectParticles();
+    requestAnimationFrame(animate);
+  }
+
+  // Event Listeners
+  globalThis.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  globalThis.addEventListener("mouseout", () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  globalThis.addEventListener("resize", resizeCanvas);
+
+  resizeCanvas();
+  animate();
 }
 
 // ========================================

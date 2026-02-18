@@ -1,0 +1,1 @@
+add animations and AI-inspired visuals like neural nets
