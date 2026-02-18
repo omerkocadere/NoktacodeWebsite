@@ -487,7 +487,9 @@ function initParticles() {
 
         if (distance < 150) {
           const opacity = 1 - distance / 150;
-          ctx.strokeStyle = accentColor.startsWith("#") ? hexToRgba(accentColor, opacity * 0.2) : `rgba(99, 102, 241, ${opacity * 0.2})`;
+          ctx.strokeStyle = accentColor.startsWith("#")
+            ? hexToRgba(accentColor, opacity * 0.2)
+            : `rgba(99, 102, 241, ${opacity * 0.2})`;
           ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
